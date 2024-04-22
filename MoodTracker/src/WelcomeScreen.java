@@ -31,8 +31,8 @@ public class WelcomeScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 welcomeScreen.setVisible(false);
-                //LoginScreen loginScreen = new LoginScreen();
-                //loginScreen.loadScreen();
+                LoginScreen loginScreen = new LoginScreen();
+                loginScreen.loadScreen();
             }
         });
 

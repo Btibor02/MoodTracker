@@ -2,7 +2,10 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        WelcomeScreen welcomeScreen = new WelcomeScreen();
-        welcomeScreen.loadScreen();
+        //WelcomeScreen welcomeScreen = new WelcomeScreen();
+        //welcomeScreen.loadScreen();
+
+        LoginScreen registerScreen = new LoginScreen();
+        registerScreen.loadScreen();
     }
 }
