@@ -1,52 +1,65 @@
 import javax.swing.*;
 import java.awt.*;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RegistrationScreen extends JFrame {
     public void loadScreen() {
         JLabel appNameLabel = getLabels().get(0);
-        JLabel userNameLabel = getLabels().get(1);
-        JLabel passwordLabel = getLabels().get(2);
-        JLabel confirmPasswordLabel = getLabels().get(3);
+        JLabel registerLabel = getLabels().get(1);
+        JLabel usernameLabel = getLabels().get(2);
+        JLabel passwordLabel = getLabels().get(3);
+        JLabel confirmPasswordLabel = getLabels().get(4);
+        JLabel loginLabel = getLabels().get(5);
 
-        JButton registerButton = getButtons().get(0);
-        JButton backButton = getButtons().get(1);
+        JButton loginButton = getButtons().get(0);
+        JButton registerButton = getButtons().get(1);
 
-        JTextField userNameText = getTextFields().get(0);
-        JTextField passwordText = getTextFields().get(1);
-        JTextField confirmPasswordText = getTextFields().get(2);
+        JTextField usernameField = getTextFields().get(0);
+        JTextField passwordField = getTextFields().get(1);
+        JTextField confirmPasswordField = getTextFields().get(2);
 
-        JFrame registrationScreen = new JFrame();
-        registrationScreen.setLayout(null);
-        registrationScreen.setTitle("Registration");
-        registrationScreen.setVisible(true);
-        registrationScreen.setResizable(false);
-        registrationScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        registrationScreen.setSize(414, 896);
-        registrationScreen.getContentPane().setBackground(new Color(243, 213, 176));
-        //registrationScreen.setLocationRelativeTo(null);
+        JFrame registerScreen = new JFrame();
+        registerScreen.setLayout(null);
+        registerScreen.setTitle("Welcome Screen");
+        registerScreen.setVisible(true);
+        registerScreen.setResizable(false);
+        registerScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        registerScreen.setSize(414, 896);
+        registerScreen.getContentPane().setBackground(new Color(255, 235, 198));
+        //registerScreen.setLocationRelativeTo(null);
 
-        registrationScreen.add(appNameLabel);
-        registrationScreen.add(userNameLabel);
-        registrationScreen.add(passwordLabel);
-        registrationScreen.add(confirmPasswordLabel);
+        registerScreen.add(appNameLabel);
+        registerScreen.add(registerLabel);
+        registerScreen.add(usernameLabel);
+        registerScreen.add(passwordLabel);
+        registerScreen.add(confirmPasswordLabel);
+        registerScreen.add(loginLabel);
 
-        registrationScreen.add(userNameText);
-        registrationScreen.add(passwordText);
-        registrationScreen.add(confirmPasswordText);
+        registerScreen.add(loginButton);
+        registerScreen.add(registerButton);
 
-        registrationScreen.add(registerButton);
-        registrationScreen.add(backButton);
+        registerScreen.add(usernameField);
+        registerScreen.add(passwordField);
+        registerScreen.add(confirmPasswordField);
 
-        backButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
-                registrationScreen.setVisible(false);
+                registerScreen.setVisible(false);
                 new WelcomeScreen().loadScreen();
+
+            }
+        });
+
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                registerScreen.setVisible(false);
             }
         });
 
@@ -55,66 +68,75 @@ public class RegistrationScreen extends JFrame {
 
     public List<JLabel> getLabels() {
         JLabel appNameLabel = new JLabel();
-        appNameLabel.setText("Registration");
-        appNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
+        appNameLabel.setText("Mood Tracker");
+        appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         appNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        appNameLabel.setBounds(0,150,414,100);
+        appNameLabel.setBounds(0,100,414,100);
 
-        JLabel userNameLabel = new JLabel();
-        userNameLabel.setText("Username");
-        userNameLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        userNameLabel.setBounds(50,240,414,100);
+        JLabel registerLabel = new JLabel();
+        registerLabel.setText("Sign up");
+        registerLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
+        registerLabel.setForeground(new Color(101, 85, 32));
+        registerLabel.setBounds(50,200,414,100);
+
+        JLabel usernameLabel = new JLabel();
+        usernameLabel.setText("Username");
+        usernameLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+        usernameLabel.setBounds(50,260,414,100);
 
         JLabel passwordLabel = new JLabel();
         passwordLabel.setText("Password");
-        passwordLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        passwordLabel.setBounds(50,340,414,100);
+        passwordLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+        passwordLabel.setBounds(50,350,414,100);
 
         JLabel confirmPasswordLabel = new JLabel();
-        confirmPasswordLabel.setText("Confirm password");
-        confirmPasswordLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        confirmPasswordLabel.setText("Confirm Password");
+        confirmPasswordLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         confirmPasswordLabel.setBounds(50,440,414,100);
 
-        List<JLabel> labels = new ArrayList<>();
-        labels.add(appNameLabel);
-        labels.add(userNameLabel);
-        labels.add(passwordLabel);
-        labels.add(confirmPasswordLabel);
+        JLabel loginLabel = new JLabel();
+        loginLabel.setText("I've an account");
+        loginLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+        loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        loginLabel.setBounds(0,630,414,100);
+
+        List<JLabel> labels = new ArrayList<>(Arrays.asList(
+                appNameLabel, registerLabel, usernameLabel, passwordLabel, confirmPasswordLabel, loginLabel
+        ));
         return labels;
     }
 
     public List<JButton> getButtons() {
-        JButton registerButton = new JButton("Create new account");
-        registerButton.setBounds(50,600,300,80);
-        registerButton.setBackground(new Color(255, 255, 255));
-        registerButton.setForeground(new Color(0, 0, 0));
+        JButton registerButton = new JButton("Sign up");
+        registerButton.setBounds(50,570,120,40);
+        registerButton.setBackground(new Color(101, 85, 32));
+        registerButton.setForeground(new Color(255, 255, 255));
+        registerButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
-        JButton backButton = new JButton("Back");
-        backButton.setBounds(50,700,300,80);
-        backButton.setBackground(new Color(255, 255, 255));
-        backButton.setForeground(new Color(0, 0, 0));
+        JButton loginButton = new JButton("Login");
+        loginButton.setBounds(100,700,200,50);
+        loginButton.setBackground(new Color(101, 85, 32));
+        loginButton.setForeground(new Color(255, 255, 255));
+        loginButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
-        List<JButton> buttons = new ArrayList<>();
-        buttons.add(registerButton);
-        buttons.add(backButton);
+        List<JButton> buttons = new ArrayList<>(Arrays.asList(loginButton, registerButton));
         return buttons;
     }
 
     public List<JTextField> getTextFields() {
-        JTextField userNameText = new JTextField();
-        userNameText.setBounds(50,300,300,50);
+        JTextField usernameText = new JTextField();
+        usernameText.setBounds(50,330,300,40);
 
         JPasswordField passwordText = new JPasswordField();
-        passwordText.setBounds(50,400,300,50);
+        passwordText.setBounds(50,420,300,40);
 
         JPasswordField confirmPasswordText = new JPasswordField();
-        confirmPasswordText.setBounds(50,500,300,50);
+        confirmPasswordText.setBounds(50,510,300,40);
 
-        List<JTextField> textFields = new ArrayList<>();
-        textFields.add(userNameText);
-        textFields.add(passwordText);
-        textFields.add(confirmPasswordText);
+        List<JTextField> textFields = new ArrayList<>(Arrays.asList(
+                usernameText, passwordText, confirmPasswordText
+        ));
+
         return textFields;
     }
 }
-

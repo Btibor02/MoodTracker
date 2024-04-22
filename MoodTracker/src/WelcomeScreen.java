@@ -47,7 +47,7 @@ public class WelcomeScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 welcomeScreen.setVisible(false);
-                
+
             }
         });
 
@@ -87,9 +87,9 @@ public class WelcomeScreen extends JFrame {
 
         JLabel registerLabel = new JLabel();
         registerLabel.setText("I don't have an account");
-       registerLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-       registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
-       registerLabel.setBounds(0,630,414,100);
+        registerLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
+        registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        registerLabel.setBounds(0,630,414,100);
 
         List<JLabel> labels = new ArrayList<>(Arrays.asList(
                 appNameLabel, loginLabel, usernameLabel, passwordLabel, registerLabel
