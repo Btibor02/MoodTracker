@@ -22,7 +22,7 @@ public class RegistrationScreen extends JFrame {
 
         JFrame registrationScreen = new JFrame();
         registrationScreen.setLayout(null);
-        registrationScreen.setTitle("Login");
+        registrationScreen.setTitle("Registration");
         registrationScreen.setVisible(true);
         registrationScreen.setResizable(false);
         registrationScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
