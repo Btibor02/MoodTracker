@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class LoginScreen extends JFrame {
         JLabel passwordLabel = getLabels().get(2);
 
         JButton loginButton = getButtons().get(0);
+        JButton backButton = getButtons().get(1);
 
         JTextField userNameText = getTextFields().get(0);
         JTextField passwordText = getTextFields().get(1);
@@ -26,12 +29,22 @@ public class LoginScreen extends JFrame {
         //loginScreen.setLocationRelativeTo(null);
 
         loginScreen.add(appNameLabel);
-        loginScreen.add(loginButton);
         loginScreen.add(userNameLabel);
-        loginScreen.add(userNameText);
         loginScreen.add(passwordLabel);
+
+        loginScreen.add(userNameText);
         loginScreen.add(passwordText);
 
+        loginScreen.add(loginButton);
+        loginScreen.add(backButton);
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginScreen.setVisible(false);
+                new WelcomeScreen().loadScreen();
+            }
+        });
     }
 
 
@@ -65,8 +78,14 @@ public class LoginScreen extends JFrame {
         loginButton.setBackground(new Color(255, 255, 255));
         loginButton.setForeground(new Color(0, 0, 0));
 
+        JButton backButton = new JButton("Back");
+        backButton.setBounds(50,700,300,80);
+        backButton.setBackground(new Color(255, 255, 255));
+        backButton.setForeground(new Color(0, 0, 0));
+
         List<JButton> buttons = new ArrayList<>();
         buttons.add(loginButton);
+        buttons.add(backButton);
         return buttons;
     }
 

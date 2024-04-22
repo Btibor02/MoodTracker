@@ -22,7 +22,7 @@ public class WelcomeScreen extends JFrame {
         //welcomeScreen.setLocationRelativeTo(null);
 
         welcomeScreen.add(appNameText);
-        welcomeScreen.add(new JLabel(""));
+
         welcomeScreen.add(loginButton);
         welcomeScreen.add(registerButton);
 
@@ -31,8 +31,7 @@ public class WelcomeScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 welcomeScreen.setVisible(false);
-                LoginScreen loginScreen = new LoginScreen();
-                loginScreen.loadScreen();
+                new LoginScreen().loadScreen();
             }
         });
 
@@ -40,8 +39,7 @@ public class WelcomeScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 welcomeScreen.setVisible(false);
-                RegistrationScreen registrationScreen = new RegistrationScreen();
-                registrationScreen.loadScreen();
+                new RegistrationScreen().loadScreen();
             }
         });
 
