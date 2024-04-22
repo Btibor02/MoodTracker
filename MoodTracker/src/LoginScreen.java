@@ -26,7 +26,6 @@ public class LoginScreen extends JFrame {
         //loginScreen.setLocationRelativeTo(null);
 
         loginScreen.add(appNameLabel);
-        loginScreen.add(new JLabel(""));
         loginScreen.add(loginButton);
         loginScreen.add(userNameLabel);
         loginScreen.add(userNameText);

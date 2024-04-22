@@ -36,6 +36,15 @@ public class WelcomeScreen extends JFrame {
             }
         });
 
+        registerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                welcomeScreen.setVisible(false);
+                RegistrationScreen registrationScreen = new RegistrationScreen();
+                registrationScreen.loadScreen();
+            }
+        });
+
     }
 
 
