@@ -22,7 +22,7 @@ public class WelcomeScreen extends JFrame {
 
         JFrame welcomeScreen = new JFrame();
         welcomeScreen.setLayout(null);
-        welcomeScreen.setTitle("Welcome Screen");
+        welcomeScreen.setTitle("Login");
         welcomeScreen.setVisible(true);
         welcomeScreen.setResizable(false);
         welcomeScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

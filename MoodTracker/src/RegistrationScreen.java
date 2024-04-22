@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -24,7 +25,7 @@ public class RegistrationScreen extends JFrame {
 
         JFrame registerScreen = new JFrame();
         registerScreen.setLayout(null);
-        registerScreen.setTitle("Welcome Screen");
+        registerScreen.setTitle("Register");
         registerScreen.setVisible(true);
         registerScreen.setResizable(false);
         registerScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +60,36 @@ public class RegistrationScreen extends JFrame {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                registerScreen.setVisible(false);
+                String username, password, confirmPassword, query;
+                String SUrl, SUser, SPass;
+                SUrl = "jdbc:mysql://localhost:3306/moodtracker";
+                SUser = "root";
+                SPass = "";
+
+                try {
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
+                    Statement st = con.createStatement();
+                    if ("".equals(usernameField.getText())) {
+                        JOptionPane.showMessageDialog(null, "Please enter username");
+                    } else  if ("".equals(passwordField.getText())) {
+                        JOptionPane.showMessageDialog(null, "Please enter password");
+                    } else if ("".equals(confirmPasswordField.getText())) {
+                        JOptionPane.showMessageDialog(null, "Please confirm password");
+                    } else if (!passwordField.getText().equals(confirmPasswordField.getText())) {
+                        JOptionPane.showMessageDialog(null, "Passwords do not match");
+                    } // etc password rules
+                    else {
+                        username = usernameField.getText();
+                        password = passwordField.getText();
+
+                        query = "INSERT INTO user(username, password)" + "VALUES ('" + username + "', '" + password + "')";
+                        st.execute(query);
+                        JOptionPane.showMessageDialog(null, "Account has been created successfully!");
+                    }
+                } catch (Exception err) {
+                    System.out.println("Error!" + err.getMessage());
+                }
             }
         });
 
