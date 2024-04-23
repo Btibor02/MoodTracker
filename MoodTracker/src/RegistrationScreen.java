@@ -66,15 +66,15 @@ public class RegistrationScreen extends JFrame {
                     Statement st = new DatabaseConnection().connection();
                     if ("".equals(usernameField.getText())) {
                         JOptionPane.showMessageDialog(null, "Please enter username");
-                    } else  if ("".equals(passwordField.getText())) {
+                    } else if ("".equals(passwordField.getText())) {
                         JOptionPane.showMessageDialog(null, "Please enter password");
                     } else if ("".equals(confirmPasswordField.getText())) {
                         JOptionPane.showMessageDialog(null, "Please confirm password");
                     } else if (!passwordField.getText().equals(confirmPasswordField.getText())) {
                         JOptionPane.showMessageDialog(null, "Passwords do not match");
-                    } else if (passwordField.getText().length() < 8 ) {
+                    } else if (passwordField.getText().length() < 8) {
                         JOptionPane.showMessageDialog(null, "Password must be at least 8 characters");
-                    }  else {
+                    } else {
                         username = usernameField.getText();
                         password = passwordField.getText();
 
@@ -84,6 +84,11 @@ public class RegistrationScreen extends JFrame {
                         passwordField.setText("");
                         confirmPasswordField.setText("");
                         JOptionPane.showMessageDialog(null, "Account has been created successfully!");
+
+                        registerScreen.setVisible(false);
+                        CalendarScreen calendarScreen = new CalendarScreen();
+                        calendarScreen.setUser(username);
+                        calendarScreen.loadScreen();
                     }
                 } catch (Exception err) {
                     System.out.println("Error!" + err.getMessage());
@@ -99,34 +104,34 @@ public class RegistrationScreen extends JFrame {
         appNameLabel.setText("Mood Tracker");
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         appNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        appNameLabel.setBounds(0,100,414,100);
+        appNameLabel.setBounds(0, 100, 414, 100);
 
         JLabel registerLabel = new JLabel();
         registerLabel.setText("Sign up");
         registerLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         registerLabel.setForeground(new Color(101, 85, 32));
-        registerLabel.setBounds(50,200,414,100);
+        registerLabel.setBounds(50, 200, 414, 100);
 
         JLabel usernameLabel = new JLabel();
         usernameLabel.setText("Username");
         usernameLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-        usernameLabel.setBounds(50,260,414,100);
+        usernameLabel.setBounds(50, 260, 414, 100);
 
         JLabel passwordLabel = new JLabel();
         passwordLabel.setText("Password");
         passwordLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-        passwordLabel.setBounds(50,350,414,100);
+        passwordLabel.setBounds(50, 350, 414, 100);
 
         JLabel confirmPasswordLabel = new JLabel();
         confirmPasswordLabel.setText("Confirm Password");
         confirmPasswordLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
-        confirmPasswordLabel.setBounds(50,440,414,100);
+        confirmPasswordLabel.setBounds(50, 440, 414, 100);
 
         JLabel loginLabel = new JLabel();
         loginLabel.setText("I've an account");
         loginLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         loginLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        loginLabel.setBounds(0,630,414,100);
+        loginLabel.setBounds(0, 630, 414, 100);
 
         List<JLabel> labels = new ArrayList<>(Arrays.asList(
                 appNameLabel, registerLabel, usernameLabel, passwordLabel, confirmPasswordLabel, loginLabel
@@ -136,13 +141,13 @@ public class RegistrationScreen extends JFrame {
 
     public List<JButton> getButtons() {
         JButton registerButton = new JButton("Sign up");
-        registerButton.setBounds(50,570,120,40);
+        registerButton.setBounds(50, 570, 120, 40);
         registerButton.setBackground(new Color(101, 85, 32));
         registerButton.setForeground(new Color(255, 255, 255));
         registerButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
         JButton loginButton = new JButton("Login");
-        loginButton.setBounds(100,700,200,50);
+        loginButton.setBounds(100, 700, 200, 50);
         loginButton.setBackground(new Color(101, 85, 32));
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setFont(new Font("Georgia", Font.PLAIN, 20));
@@ -153,13 +158,13 @@ public class RegistrationScreen extends JFrame {
 
     public List<JTextField> getTextFields() {
         JTextField usernameText = new JTextField();
-        usernameText.setBounds(50,330,300,40);
+        usernameText.setBounds(50, 330, 300, 40);
 
         JPasswordField passwordText = new JPasswordField();
-        passwordText.setBounds(50,420,300,40);
+        passwordText.setBounds(50, 420, 300, 40);
 
         JPasswordField confirmPasswordText = new JPasswordField();
-        confirmPasswordText.setBounds(50,510,300,40);
+        confirmPasswordText.setBounds(50, 510, 300, 40);
 
         List<JTextField> textFields = new ArrayList<>(Arrays.asList(
                 usernameText, passwordText, confirmPasswordText

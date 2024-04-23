@@ -65,6 +65,10 @@ public class WelcomeScreen extends JFrame {
                     }
                     if (notFound == 1 && passwordDb.equals(password)) {
                         JOptionPane.showMessageDialog(null, "You have logged in!");
+                        welcomeScreen.setVisible(false);
+                        CalendarScreen calendarScreen = new CalendarScreen();
+                        calendarScreen.setUser(username);
+                        calendarScreen.loadScreen();
                     } else {
                         JOptionPane.showMessageDialog(null, "Incorrect username or password", "error", JOptionPane.ERROR_MESSAGE);
                     }
