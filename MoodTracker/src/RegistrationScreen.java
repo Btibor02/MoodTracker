@@ -60,16 +60,10 @@ public class RegistrationScreen extends JFrame {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String username, password, confirmPassword, query;
-                String SUrl, SUser, SPass;
-                SUrl = "jdbc:mysql://localhost:3306/moodtracker";
-                SUser = "root";
-                SPass = "";
+                String username, password, query;
 
                 try {
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
-                    Statement st = con.createStatement();
+                    Statement st = new DatabaseConnection().connection();
                     if ("".equals(usernameField.getText())) {
                         JOptionPane.showMessageDialog(null, "Please enter username");
                     } else  if ("".equals(passwordField.getText())) {
@@ -78,13 +72,17 @@ public class RegistrationScreen extends JFrame {
                         JOptionPane.showMessageDialog(null, "Please confirm password");
                     } else if (!passwordField.getText().equals(confirmPasswordField.getText())) {
                         JOptionPane.showMessageDialog(null, "Passwords do not match");
-                    } // etc password rules
-                    else {
+                    } else if (passwordField.getText().length() < 8 ) {
+                        JOptionPane.showMessageDialog(null, "Password must be at least 8 characters");
+                    }  else {
                         username = usernameField.getText();
                         password = passwordField.getText();
 
                         query = "INSERT INTO user(username, password)" + "VALUES ('" + username + "', '" + password + "')";
                         st.execute(query);
+                        usernameField.setText("");
+                        passwordField.setText("");
+                        confirmPasswordField.setText("");
                         JOptionPane.showMessageDialog(null, "Account has been created successfully!");
                     }
                 } catch (Exception err) {

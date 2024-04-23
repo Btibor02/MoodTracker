@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,8 +48,35 @@ public class WelcomeScreen extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                welcomeScreen.setVisible(false);
+                String username, password, passwordDb = null, query;
+                int notFound = 0;
 
+                try {
+                    Statement st = new DatabaseConnection().connection();
+
+                    username = usernameField.getText();
+                    password = passwordField.getText();
+
+                    query = "SELECT * FROM user WHERE username = '" + username + "'";
+                    ResultSet rs = st.executeQuery(query);
+                    while (rs.next()) {
+                        passwordDb = rs.getString("password");
+                        notFound = 1;
+                    }
+                    if (notFound == 1 && passwordDb.equals(password)) {
+                        JOptionPane.showMessageDialog(null, "You have logged in!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Incorrect username or password", "error", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    st.execute(query);
+                    usernameField.setText("");
+                    passwordField.setText("");
+
+
+                } catch (Exception err) {
+                    System.out.println("Error!" + err.getMessage());
+                }
             }
         });
 
