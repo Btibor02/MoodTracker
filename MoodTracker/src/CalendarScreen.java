@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,14 +11,20 @@ import java.util.List;
 public class CalendarScreen extends JFrame {
     JFrame calendarScreen = new JFrame();
     JPanel calendar = new JPanel();
+    JTable calendarTable = new JTable();
     LocalDate todayDate = LocalDate.now();
+    JLabel currentMonthLabel = new JLabel();
 
     public void loadScreen() {
-        calendar();
+
+        calendar(todayDate);
 
         JLabel appNameLabel = getLabels().get(0);
         JLabel welcomeLabel = getLabels().get(1);
-        JLabel currentMonthLabel = getLabels().get(2);
+        JLabel currentMonthLabel = getCurrentMonthLabel(todayDate);
+
+        JButton previousMonthButton = getButtons().get(0);
+        JButton nextMonthButton = getButtons().get(1);
 
         calendarScreen.setLayout(null);
         calendarScreen.setTitle("Calendar");
@@ -34,9 +41,24 @@ public class CalendarScreen extends JFrame {
         calendarScreen.add(welcomeLabel);
         calendarScreen.add(currentMonthLabel);
 
+        calendarScreen.add(previousMonthButton);
+        calendarScreen.add(nextMonthButton);
+
+        previousMonthButton.addActionListener(e ->  {
+            todayDate = todayDate.minusMonths(1);
+            calendar(todayDate);
+            getCurrentMonthLabel(todayDate);
+        });
+
+        nextMonthButton.addActionListener(e -> {
+            todayDate = todayDate.plusMonths(1);
+            calendar(todayDate);
+            getCurrentMonthLabel(todayDate);
+        });
+
     }
 
-    public void calendar() {
+    public void calendar(LocalDate todayDate) {
         calendar.setLayout(null);
         calendar.setBackground(new Color(169, 125, 40));
         calendar.setSize(350,360);
@@ -44,7 +66,7 @@ public class CalendarScreen extends JFrame {
         calendar.setLocation(25, 250);
 
         dayNames();
-        makeDayPanels();
+        makeDayPanels(todayDate);
         calendarScreen.add(calendar);
     }
 
@@ -94,7 +116,7 @@ public class CalendarScreen extends JFrame {
         }
     }
 
-    public Integer days() {
+    public Integer days(LocalDate todayDate) {
 
         String firstDay = todayDate.withDayOfMonth(1).getDayOfWeek().name();
         return switch (firstDay) {
@@ -109,12 +131,13 @@ public class CalendarScreen extends JFrame {
         };
     }
 
-    public void makeDayPanels() {
-        int firstDay = days();
+    public void makeDayPanels(LocalDate todayDate) {
+        int firstDay = days(todayDate);
 
         String[] dayOfTheWeek = {"M", "T", "W", "T", "F", "S", "S"};
 
         int numRows = 5;
+
         DefaultTableModel model = new DefaultTableModel(numRows, dayOfTheWeek.length) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -126,7 +149,8 @@ public class CalendarScreen extends JFrame {
         centerRender.setHorizontalAlignment(SwingConstants.CENTER);
 
 
-        JTable calendarTable = new JTable(model);
+
+        calendarTable.setModel(model);
         for (int i = 0; i < model.getColumnCount(); i++) {
             calendarTable.getColumnModel().getColumn(i).setCellRenderer(centerRender);
         }
@@ -142,7 +166,6 @@ public class CalendarScreen extends JFrame {
             dayNumber++;
         }
 
-        LocalDate todayDate = LocalDate.now();
         int lastDay = todayDate.withDayOfMonth(1).lengthOfMonth();
         for (int i = 1; i < 5; i++) {
             for (int j = 0; j < 7; j++) {
@@ -170,6 +193,15 @@ public class CalendarScreen extends JFrame {
         calendarScreen.add(usernameLabel);
     }
 
+    public JLabel getCurrentMonthLabel(LocalDate todayDate) {
+        currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
+        currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
+        currentMonthLabel.setForeground(new Color(101, 85, 32));
+        currentMonthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        currentMonthLabel.setBounds(0,180,414,100);
+        return currentMonthLabel;
+    }
+
 
     public List<JLabel> getLabels() {
         JLabel appNameLabel = new JLabel();
@@ -184,17 +216,33 @@ public class CalendarScreen extends JFrame {
         welcomeLabel.setForeground(new Color(101, 85, 32));
         welcomeLabel.setBounds(50,70,414,100);
 
-        JLabel currentMonthLabel = new JLabel();
-        currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
-        currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
-        currentMonthLabel.setForeground(new Color(101, 85, 32));
-        currentMonthLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        currentMonthLabel.setBounds(0,180,414,100);
-
         List<JLabel> labels = new ArrayList<>(Arrays.asList(
-                appNameLabel, welcomeLabel, currentMonthLabel
+                appNameLabel, welcomeLabel
         ));
         return labels;
+    }
+
+    public List<JButton> getButtons() {
+        JButton prevMonthButton = new JButton();
+        prevMonthButton.setText("<-");
+        prevMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
+        prevMonthButton.setForeground(new Color(101, 85, 32));;
+        prevMonthButton.setBackground(new Color(236, 203, 124));
+        prevMonthButton.setBounds(70, 190, 70, 70 );
+        prevMonthButton.setOpaque(false);
+        prevMonthButton.setBorderPainted(false);
+
+        JButton nextMonthButton = new JButton();
+        nextMonthButton.setText("->");
+        nextMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
+        nextMonthButton.setForeground(new Color(101, 85, 32));;
+        nextMonthButton.setBackground(new Color(236, 203, 124));
+        nextMonthButton.setBounds(270, 190, 70, 70 );
+        nextMonthButton.setOpaque(false);
+        nextMonthButton.setBorderPainted(false);
+
+        List<JButton> buttons = new ArrayList<>(Arrays.asList(prevMonthButton, nextMonthButton));
+        return buttons;
     }
 
 }
