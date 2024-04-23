@@ -9,12 +9,16 @@ import java.util.List;
 
 public class CalendarScreen extends JFrame {
     JFrame calendarScreen = new JFrame();
+    JPanel calendar = new JPanel();
+
     public void loadScreen() {
+        calendar();
+
         JLabel appNameLabel = getLabels().get(0);
         JLabel welcomeLabel = getLabels().get(1);
 
         calendarScreen.setLayout(null);
-        calendarScreen.setTitle("Register");
+        calendarScreen.setTitle("Calendar");
         calendarScreen.setVisible(true);
         calendarScreen.setResizable(false);
         calendarScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -22,9 +26,67 @@ public class CalendarScreen extends JFrame {
         calendarScreen.getContentPane().setBackground(new Color(255, 235, 198));
         //calendarScreen.setLocationRelativeTo(null);
 
+
+
         calendarScreen.add(appNameLabel);
         calendarScreen.add(welcomeLabel);
 
+    }
+
+    public void calendar() {
+        calendar.setLayout(null);
+        calendar.setBackground(new Color(169, 125, 40));
+        calendar.setSize(350,400);
+        calendar.setVisible(true);
+        calendar.setLocation(25, 200);
+
+        dayNames();
+        calendarScreen.add(calendar);
+    }
+
+    public void dayNames() {
+        JPanel monday = new JPanel();
+        JPanel tuesday = new JPanel();
+        JPanel wednesday = new JPanel();
+        JPanel thursday = new JPanel();
+        JPanel friday = new JPanel();
+        JPanel saturday = new JPanel();
+        JPanel sunday = new JPanel();
+
+        JLabel mondayLabel = new JLabel("M");
+        JLabel tuesdayLabel = new JLabel("T");
+        JLabel wednesdayLabel = new JLabel("W");
+        JLabel thursdayLabel = new JLabel("T");
+        JLabel fridayLabel = new JLabel("F");
+        JLabel saturdayLabel = new JLabel("S");
+        JLabel sundayLabel = new JLabel("S");
+
+        List<JPanel> dayNames = new ArrayList<>(Arrays.asList(
+                monday, tuesday, wednesday, thursday, friday, saturday, sunday));
+
+        List<JLabel> dayNamesLabel = new ArrayList<>(Arrays.asList(
+                mondayLabel, tuesdayLabel, wednesdayLabel, thursdayLabel, fridayLabel, saturdayLabel, sundayLabel));
+
+
+        for (int i = 0; i < dayNames.size(); i++) {
+            dayNames.get(i).setVisible(true);
+            dayNames.get(i).setLayout(null);
+            dayNames.get(i).setBackground(new Color(14, 144, 190));
+            dayNames.get(i).setBounds(i * 50, 0, 50, 50);
+            dayNames.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+            JLabel dayNameLabel = dayNamesLabel.get(i);
+            dayNameLabel.setVisible(true);
+            dayNameLabel.setForeground(Color.BLACK);
+            dayNameLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
+            dayNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+            dayNameLabel.setVerticalAlignment(SwingConstants.CENTER);
+            dayNameLabel.setBounds(0,0,50,50);
+
+            dayNames.get(i).add(dayNameLabel);
+            calendar.add(dayNames.get(i));
+
+        }
     }
 
     public void setUser (String username) {
@@ -60,5 +122,5 @@ public class CalendarScreen extends JFrame {
         ));
         return labels;
     }
-    
+
 }
