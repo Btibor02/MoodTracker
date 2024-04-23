@@ -2,24 +2,22 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 public class CalendarScreen extends JFrame {
     JFrame calendarScreen = new JFrame();
     JPanel calendar = new JPanel();
+    LocalDate todayDate = LocalDate.now();
 
     public void loadScreen() {
         calendar();
 
         JLabel appNameLabel = getLabels().get(0);
         JLabel welcomeLabel = getLabels().get(1);
+        JLabel currentMonthLabel = getLabels().get(2);
 
         calendarScreen.setLayout(null);
         calendarScreen.setTitle("Calendar");
@@ -34,15 +32,16 @@ public class CalendarScreen extends JFrame {
 
         calendarScreen.add(appNameLabel);
         calendarScreen.add(welcomeLabel);
+        calendarScreen.add(currentMonthLabel);
 
     }
 
     public void calendar() {
         calendar.setLayout(null);
         calendar.setBackground(new Color(169, 125, 40));
-        calendar.setSize(350,420);
+        calendar.setSize(350,360);
         calendar.setVisible(true);
-        calendar.setLocation(25, 200);
+        calendar.setLocation(25, 250);
 
         dayNames();
         makeDayPanels();
@@ -77,17 +76,17 @@ public class CalendarScreen extends JFrame {
         for (int i = 0; i < dayNames.size(); i++) {
             dayNames.get(i).setVisible(true);
             dayNames.get(i).setLayout(null);
-            dayNames.get(i).setBackground(new Color(14, 144, 190));
-            dayNames.get(i).setBounds(i * 50, 0, 50, 70);
-            dayNames.get(i).setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            dayNames.get(i).setBackground(new Color(236, 203, 124));
+            dayNames.get(i).setBounds(i * 50, 0, 50, 60);
 
             JLabel dayNameLabel = dayNamesLabel.get(i);
             dayNameLabel.setVisible(true);
             dayNameLabel.setForeground(Color.BLACK);
             dayNameLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
+            dayNameLabel.setForeground(new Color(101, 85, 32));
             dayNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
             dayNameLabel.setVerticalAlignment(SwingConstants.CENTER);
-            dayNameLabel.setBounds(0,0,50,70);
+            dayNameLabel.setBounds(0,0,50,60);
 
             dayNames.get(i).add(dayNameLabel);
             calendar.add(dayNames.get(i));
@@ -96,7 +95,7 @@ public class CalendarScreen extends JFrame {
     }
 
     public Integer days() {
-        LocalDate todayDate = LocalDate.now();
+
         String firstDay = todayDate.withDayOfMonth(1).getDayOfWeek().name();
         return switch (firstDay) {
             case "MONDAY" -> 0;
@@ -116,18 +115,26 @@ public class CalendarScreen extends JFrame {
         String[] dayOfTheWeek = {"M", "T", "W", "T", "F", "S", "S"};
 
         int numRows = 5;
-        DefaultTableModel model = new DefaultTableModel(numRows, dayOfTheWeek.length);
+        DefaultTableModel model = new DefaultTableModel(numRows, dayOfTheWeek.length) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         model.setColumnIdentifiers(dayOfTheWeek);
         DefaultTableCellRenderer centerRender = new DefaultTableCellRenderer();
         centerRender.setHorizontalAlignment(SwingConstants.CENTER);
 
 
         JTable calendarTable = new JTable(model);
-        calendarTable.setDefaultRenderer(Integer.class, centerRender);
+        for (int i = 0; i < model.getColumnCount(); i++) {
+            calendarTable.getColumnModel().getColumn(i).setCellRenderer(centerRender);
+        }
         calendarTable.setVisible(true);
-        calendarTable.setBounds(0,70,350,420);
-        calendarTable.setRowHeight(70);
+        calendarTable.setBounds(0,60,350,360);
+        calendarTable.setRowHeight(60);
         calendarTable.setFont(new Font("Georgia", Font.PLAIN, 20));
+        calendarTable.setForeground(new Color(101, 85, 32));
 
         int dayNumber = 1;
         for (int i = 0; i < 7 - firstDay; i++) {
@@ -177,8 +184,15 @@ public class CalendarScreen extends JFrame {
         welcomeLabel.setForeground(new Color(101, 85, 32));
         welcomeLabel.setBounds(50,70,414,100);
 
+        JLabel currentMonthLabel = new JLabel();
+        currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
+        currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
+        currentMonthLabel.setForeground(new Color(101, 85, 32));
+        currentMonthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        currentMonthLabel.setBounds(0,180,414,100);
+
         List<JLabel> labels = new ArrayList<>(Arrays.asList(
-                appNameLabel, welcomeLabel
+                appNameLabel, welcomeLabel, currentMonthLabel
         ));
         return labels;
     }
