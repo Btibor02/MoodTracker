@@ -41,7 +41,7 @@ public class CalendarScreen extends JFrame {
         calendarScreen.setResizable(false);
         calendarScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         calendarScreen.setSize(414, 896);
-        calendarScreen.getContentPane().setBackground(new Color(255, 235, 198));
+        calendarScreen.getContentPane().setBackground(new Colors().backgroundColor);
         //calendarScreen.setLocationRelativeTo(null);
 
 
@@ -111,14 +111,14 @@ public class CalendarScreen extends JFrame {
         for (int i = 0; i < dayNames.size(); i++) {
             dayNames.get(i).setVisible(true);
             dayNames.get(i).setLayout(null);
-            dayNames.get(i).setBackground(new Color(236, 203, 124));
+            dayNames.get(i).setBackground(new Colors().secondaryBackgroundColor);
             dayNames.get(i).setBounds(i * 50, 0, 50, 60);
 
             JLabel dayNameLabel = dayNamesLabel.get(i);
             dayNameLabel.setVisible(true);
             dayNameLabel.setForeground(Color.BLACK);
             dayNameLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
-            dayNameLabel.setForeground(new Color(101, 85, 32));
+            dayNameLabel.setForeground(new Colors().textColor);
             dayNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
             dayNameLabel.setVerticalAlignment(SwingConstants.CENTER);
             dayNameLabel.setBounds(0,0,50,60);
@@ -171,7 +171,7 @@ public class CalendarScreen extends JFrame {
         calendarTable.setBounds(0,60,350,360);
         calendarTable.setRowHeight(60);
         calendarTable.setFont(new Font("Georgia", Font.PLAIN, 20));
-        calendarTable.setForeground(new Color(101, 85, 32));
+        calendarTable.setForeground(new Colors().textColor);
 
         int dayNumber = 1;
         for (int i = 0; i < 7 - firstDay; i++) {
@@ -200,7 +200,7 @@ public class CalendarScreen extends JFrame {
             usernameLabel.setText(username);
         }
         usernameLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
-        usernameLabel.setForeground(new Color(101, 85, 32));
+        usernameLabel.setForeground(new Colors().textColor);
         usernameLabel.setBounds(260,70,414,100);
 
         calendarScreen.add(usernameLabel);
@@ -209,7 +209,7 @@ public class CalendarScreen extends JFrame {
     private JLabel getCurrentMonthLabel(LocalDate todayDate) {
         currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
         currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
-        currentMonthLabel.setForeground(new Color(101, 85, 32));
+        currentMonthLabel.setForeground(new Colors().textColor);
         currentMonthLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentMonthLabel.setBounds(0,180,414,100);
         return currentMonthLabel;
@@ -218,7 +218,7 @@ public class CalendarScreen extends JFrame {
     private JLabel getCurrentYearLabel(LocalDate todayDate) {
         currentYearLabel.setText(String.valueOf(todayDate.getYear()));
         currentYearLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
-        currentYearLabel.setForeground(new Color(101, 85, 32));
+        currentYearLabel.setForeground(new Colors().textColor);
         currentYearLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentYearLabel.setBounds(0,150,414,100);
         return currentYearLabel;
@@ -235,7 +235,7 @@ public class CalendarScreen extends JFrame {
         JLabel welcomeLabel = new JLabel();
         welcomeLabel.setText("Welcome back ");
         welcomeLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
-        welcomeLabel.setForeground(new Color(101, 85, 32));
+        welcomeLabel.setForeground(new Colors().textColor);
         welcomeLabel.setBounds(50,70,414,100);
 
         List<JLabel> labels = new ArrayList<>(Arrays.asList(
@@ -248,8 +248,8 @@ public class CalendarScreen extends JFrame {
         JButton prevMonthButton = new JButton();
         prevMonthButton.setText("<-");
         prevMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
-        prevMonthButton.setForeground(new Color(101, 85, 32));;
-        prevMonthButton.setBackground(new Color(236, 203, 124));
+        prevMonthButton.setForeground(new Colors().textColor);;
+        prevMonthButton.setBackground(new Colors().secondaryBackgroundColor);
         prevMonthButton.setBounds(60, 190, 70, 70 );
         prevMonthButton.setOpaque(false);
         prevMonthButton.setBorderPainted(false);
@@ -257,8 +257,8 @@ public class CalendarScreen extends JFrame {
         JButton nextMonthButton = new JButton();
         nextMonthButton.setText("->");
         nextMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
-        nextMonthButton.setForeground(new Color(101, 85, 32));;
-        nextMonthButton.setBackground(new Color(236, 203, 124));
+        nextMonthButton.setForeground(new Colors().textColor);;
+        nextMonthButton.setBackground(new Colors().secondaryBackgroundColor);
         nextMonthButton.setBounds(280, 190, 70, 70 );
         nextMonthButton.setOpaque(false);
         nextMonthButton.setBorderPainted(false);

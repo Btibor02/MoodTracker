@@ -10,7 +10,7 @@ public class Menu {
         JPanel panel = new JPanel();
         panel.setLayout(null);
         panel.setVisible(true);
-        panel.setBackground(new Color(236, 203, 124));
+        panel.setBackground(new Colors().secondaryBackgroundColor);
         panel.setBounds(0,760,414,100);
 
         JButton calendarButton = getButtons(currentScreen).get(0);
@@ -32,8 +32,8 @@ public class Menu {
         calendarButton.setVisible(true);
         calendarButton.setOpaque(false);
         calendarButton.setBorderPainted(true);
-        calendarButton.setBackground(new Color(236, 203, 124));
-        calendarButton.setBorder(BorderFactory.createLineBorder(new Color(236, 203, 124)));
+        calendarButton.setBackground(new Colors().secondaryBackgroundColor);
+        calendarButton.setBorder(BorderFactory.createLineBorder(new Colors().secondaryBackgroundColor));
         calendarButton.setBounds(20, 10, 80, 80);
 
         //<a href="https://www.flaticon.com/free-icons/analysis" title="analysis icons">Analysis icons created by deemakdaksina - Flaticon</a>
@@ -42,8 +42,8 @@ public class Menu {
         otherButton.setVisible(true);
         otherButton.setOpaque(false);
         otherButton.setBorderPainted(false);
-        otherButton.setBackground(new Color(236, 203, 124));
-        otherButton.setBorder(BorderFactory.createLineBorder(new Color(236, 203, 124)));
+        otherButton.setBackground(new Colors().secondaryBackgroundColor);
+        otherButton.setBorder(BorderFactory.createLineBorder(new Colors().secondaryBackgroundColor));
         otherButton.setBounds(160, 10, 80, 80);
 
         JButton otherSecondButton = new JButton(new ImageIcon("images/settingIcon.png"));
@@ -51,8 +51,8 @@ public class Menu {
         otherSecondButton.setVisible(true);
         otherSecondButton.setOpaque(false);
         otherSecondButton.setBorderPainted(false);
-        otherSecondButton.setBackground(new Color(236, 203, 124));
-        otherSecondButton.setBorder(BorderFactory.createLineBorder(new Color(236, 203, 124)));
+        otherSecondButton.setBackground(new Colors().secondaryBackgroundColor);
+        otherSecondButton.setBorder(BorderFactory.createLineBorder(new Colors().secondaryBackgroundColor));
         otherSecondButton.setBounds(300, 10, 80, 80);
 
         switch(currentScreen) {

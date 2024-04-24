@@ -30,7 +30,7 @@ public class RegistrationScreen extends JFrame {
         registerScreen.setResizable(false);
         registerScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         registerScreen.setSize(414, 896);
-        registerScreen.getContentPane().setBackground(new Color(255, 235, 198));
+        registerScreen.getContentPane().setBackground(new Colors().backgroundColor);
         //registerScreen.setLocationRelativeTo(null);
 
         registerScreen.add(appNameLabel);
@@ -109,7 +109,7 @@ public class RegistrationScreen extends JFrame {
         JLabel registerLabel = new JLabel();
         registerLabel.setText("Sign up");
         registerLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
-        registerLabel.setForeground(new Color(101, 85, 32));
+        registerLabel.setForeground(new Colors().textColor);
         registerLabel.setBounds(50, 200, 414, 100);
 
         JLabel usernameLabel = new JLabel();
@@ -142,13 +142,13 @@ public class RegistrationScreen extends JFrame {
     public List<JButton> getButtons() {
         JButton registerButton = new JButton("Sign up");
         registerButton.setBounds(50, 570, 120, 40);
-        registerButton.setBackground(new Color(101, 85, 32));
+        registerButton.setBackground(new Colors().textColor);
         registerButton.setForeground(new Color(255, 255, 255));
         registerButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(100, 700, 200, 50);
-        loginButton.setBackground(new Color(101, 85, 32));
+        loginButton.setBackground(new Colors().textColor);
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
