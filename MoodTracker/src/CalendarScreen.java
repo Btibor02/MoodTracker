@@ -2,8 +2,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -27,7 +25,6 @@ public class CalendarScreen extends JFrame {
 
     JButton saveButton;
     JComboBox<String> moodComboBox;
-    String selectedMood;
 
     int selectedRow;
     int selectedCol;
@@ -159,7 +156,7 @@ public class CalendarScreen extends JFrame {
 
         JComboBox<String> moodComboBox = getComboBox();
         JTextArea noteTextField = getTextField();
-        JButton saveButton = getDialogButtons().get(0);
+        JButton saveButton = getDialogButton();
 
         panel.add(monthLabel);
         panel.add(dayLabel);
@@ -170,13 +167,10 @@ public class CalendarScreen extends JFrame {
         panel.add(noteTextField);
         panel.add(saveButton);
 
-        saveButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String selectedMood = (String) moodComboBox.getSelectedItem();
-                refreshTable(selectedMood);
+        saveButton.addActionListener(e -> {
+            String selectedMood = (String) moodComboBox.getSelectedItem();
+            refreshTable(selectedMood);
 
-            }
         });
 
         return panel;
@@ -359,10 +353,9 @@ public class CalendarScreen extends JFrame {
         noteLabel.setVerticalAlignment(SwingConstants.TOP);
         noteLabel.setBounds(40,160,300,600);
 
-        List<JLabel> labels = new ArrayList<>(Arrays.asList(
+        return new ArrayList<>(Arrays.asList(
                 dayQuestionLabel, noteLabel
         ));
-        return labels;
     }
 
     private JLabel getCurrentMonthLabel(LocalDate todayDate) {
@@ -397,17 +390,16 @@ public class CalendarScreen extends JFrame {
         welcomeLabel.setForeground(new Colors().textColor);
         welcomeLabel.setBounds(50,70,414,100);
 
-        List<JLabel> labels = new ArrayList<>(Arrays.asList(
+        return new ArrayList<>(Arrays.asList(
                 appNameLabel, welcomeLabel
         ));
-        return labels;
     }
 
     private List<JButton> getButtons() {
         JButton prevMonthButton = new JButton();
         prevMonthButton.setText("<-");
         prevMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
-        prevMonthButton.setForeground(new Colors().textColor);;
+        prevMonthButton.setForeground(new Colors().textColor);
         prevMonthButton.setBackground(new Colors().secondaryBackgroundColor);
         prevMonthButton.setBounds(60, 190, 70, 70 );
         prevMonthButton.setOpaque(false);
@@ -416,17 +408,16 @@ public class CalendarScreen extends JFrame {
         JButton nextMonthButton = new JButton();
         nextMonthButton.setText("->");
         nextMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
-        nextMonthButton.setForeground(new Colors().textColor);;
+        nextMonthButton.setForeground(new Colors().textColor);
         nextMonthButton.setBackground(new Colors().secondaryBackgroundColor);
         nextMonthButton.setBounds(280, 190, 70, 70 );
         nextMonthButton.setOpaque(false);
         nextMonthButton.setBorderPainted(false);
 
-        List<JButton> buttons = new ArrayList<>(Arrays.asList(prevMonthButton, nextMonthButton));
-        return buttons;
+        return new ArrayList<>(Arrays.asList(prevMonthButton, nextMonthButton));
     }
 
-    private List<JButton> getDialogButtons() throws IOException {
+    private JButton getDialogButton() {
         saveButton = new JButton("Save");
         saveButton.setFocusPainted(false);
         saveButton.setVisible(true);
@@ -435,9 +426,8 @@ public class CalendarScreen extends JFrame {
         saveButton.setHorizontalAlignment(SwingConstants.CENTER);
         saveButton.setBounds(80, 510, 100, 40);
 
-        List<JButton> buttons =  new ArrayList<>(Arrays.asList(
-                saveButton));
-        return buttons;
+
+        return saveButton;
 
 
 
