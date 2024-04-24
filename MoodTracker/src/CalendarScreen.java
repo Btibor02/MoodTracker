@@ -3,6 +3,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -67,6 +69,29 @@ public class CalendarScreen extends JFrame {
             calendar(todayDate);
             getCurrentMonthLabel(todayDate);
             getCurrentYearLabel(todayDate);
+        });
+
+        calendarTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int row = calendarTable.getSelectedRow();
+                int col = calendarTable.getSelectedColumn();
+
+                DefaultTableModel model = (DefaultTableModel) calendarTable.getModel();
+
+
+                if (model.getValueAt(row, col) != null && !model.getValueAt(row, col).toString().contains("html")) {
+                    System.out.println(model.getValueAt(row, col) + " <html> <p style=\"text-align:center;color:#009933;font-size: 20px;\"> ● " + "</p> </html>");
+                    model.setValueAt("<html>" + model.getValueAt(row, col) + "<p style=\"text-align:center;color:#009933;font-size: 20px;\"> ● " + "</p> </html>" ,row, col);
+                } else if (model.getValueAt(row, col).toString().contains("html")) {
+                    String text = (String) model.getValueAt(row,col);
+                    text = text.replaceAll("#.*?;", "a83232");
+                    System.out.println(text);
+                    model.setValueAt(text,row, col);
+                }
+
+
+            }
         });
 
     }
@@ -157,6 +182,9 @@ public class CalendarScreen extends JFrame {
                 return false;
             }
         };
+
+        calendarTable.setRowSelectionAllowed(false);
+        calendarTable.setCellSelectionEnabled(false);
         model.setColumnIdentifiers(dayOfTheWeek);
         DefaultTableCellRenderer centerRender = new DefaultTableCellRenderer();
         centerRender.setHorizontalAlignment(SwingConstants.CENTER);
