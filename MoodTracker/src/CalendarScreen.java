@@ -2,6 +2,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -21,7 +22,15 @@ public class CalendarScreen extends JFrame {
     JLabel currentMonthLabel = new JLabel();
     JLabel currentYearLabel = new JLabel();
     JPanel menu = navigationMenu.navigationMenu("calendar");
+    JDialog moodSelectorDialog;
+    DefaultTableModel model;
 
+    JButton saveButton;
+    JComboBox<String> moodComboBox;
+    String selectedMood;
+
+    int selectedRow;
+    int selectedCol;
     public CalendarScreen() throws IOException {
     }
 
@@ -74,11 +83,23 @@ public class CalendarScreen extends JFrame {
         calendarTable.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                int row = calendarTable.getSelectedRow();
-                int col = calendarTable.getSelectedColumn();
-                int selectedDay = (int) calendarTable.getValueAt(row, col);
+                model = (DefaultTableModel) calendarTable.getModel();
+                selectedRow = calendarTable.getSelectedRow();
+                selectedCol = calendarTable.getSelectedColumn();
+                int selectedDay;
+                String input = calendarTable.getValueAt(selectedRow, selectedCol).toString();
+                System.out.println(input);
+                if (input.contains("html")) {
+                    int startIndex = input.indexOf(">");
+                    int endIndex = input.indexOf("<", startIndex);
+                    String day = input.substring(startIndex + 1, endIndex);
+                    System.out.println(day);
+                    selectedDay = Integer.parseInt(day);
+                } else {
+                    selectedDay = (int) calendarTable.getValueAt(selectedRow, selectedCol);
+                }
 
-                JDialog moodSelectorDialog = new JDialog();
+                moodSelectorDialog = new JDialog();
                 moodSelectorDialog.setTitle("Select Mood");
                 moodSelectorDialog.setVisible(true);
                 moodSelectorDialog.setResizable(false);
@@ -86,15 +107,79 @@ public class CalendarScreen extends JFrame {
                 moodSelectorDialog.setBounds(50,100,300,600);
 
                 try {
-                    moodSelectorDialog.add(new SelectMood().moodSelector(todayDate, selectedDay));
+                    moodSelectorDialog.add(moodSelector(todayDate, selectedDay));
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
+            }
+        });
 
+    }
+
+    public void refreshTable(String selectedMood) {
+        moodSelectorDialog.setVisible(false);
+        String inputString = model.getValueAt(selectedRow, selectedCol).toString();
+        if (inputString.contains("html")) {
+            int startIndex = inputString.indexOf(">");
+            int endIndex = inputString.indexOf("<", startIndex);
+            inputString = inputString.substring(startIndex + 1, endIndex);
+        }
+        switch (selectedMood) {
+            case "Perfect":
+                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:#02f702;font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+                break;
+            case "Good":
+                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:#0c400c;font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+                break;
+            case "Meh":
+                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:#104e85;font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+                break;
+            case "Bad":
+                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:#ba3811;font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+                break;
+            case "Awful":
+                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:#ba1111;font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+                break;
+        }
+        System.out.println(model.getValueAt(selectedRow, selectedCol).toString());
+
+    }
+
+    public JPanel moodSelector(LocalDate selectedDate, Integer selectedDay) throws IOException {
+        JPanel panel = new JPanel();
+        panel.setLayout(null);
+        panel.setVisible(true);
+        panel.setBackground(new Colors().backgroundColor);
+        panel.setBounds(0,760,300,600);
+
+        JLabel monthLabel = getMonthLabel(selectedDate);
+        JLabel dayLabel = getDayLabel(selectedDay);
+        JLabel dayQuestionLabel = getDialogLabels().get(0);
+        JLabel noteLabel = getDialogLabels().get(1);
+
+        JComboBox<String> moodComboBox = getComboBox();
+        JTextArea noteTextField = getTextField();
+        JButton saveButton = getDialogButtons().get(0);
+
+        panel.add(monthLabel);
+        panel.add(dayLabel);
+        panel.add(dayQuestionLabel);
+        panel.add(noteLabel);
+
+        panel.add(moodComboBox);
+        panel.add(noteTextField);
+        panel.add(saveButton);
+
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String selectedMood = (String) moodComboBox.getSelectedItem();
+                refreshTable(selectedMood);
 
             }
         });
 
+        return panel;
     }
 
     private void calendar(LocalDate todayDate) {
@@ -235,6 +320,51 @@ public class CalendarScreen extends JFrame {
         calendarScreen.add(usernameLabel);
     }
 
+    private JLabel getMonthLabel(LocalDate selectedDate) {
+        JLabel monthLabel = new JLabel();
+        monthLabel.setText(String.valueOf(selectedDate.getMonth()));
+        monthLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
+        monthLabel.setForeground(new Colors().textColor);
+        monthLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        monthLabel.setVerticalAlignment(SwingConstants.TOP);
+        monthLabel.setBounds(-25,20,300,600);
+        return monthLabel;
+    }
+
+    private JLabel getDayLabel(Integer selectedDay) {
+        JLabel dayLabel = new JLabel();
+        dayLabel.setText(String.valueOf(selectedDay));
+        dayLabel.setFont(new Font("Georgia", Font.PLAIN, 20));
+        dayLabel.setForeground(new Colors().textColor);
+        dayLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        dayLabel.setVerticalAlignment(SwingConstants.TOP);
+        dayLabel.setBounds(25,20,300,600);
+        return dayLabel;
+    }
+
+    private List<JLabel> getDialogLabels() {
+        JLabel dayQuestionLabel = new JLabel();
+        dayQuestionLabel.setText("How was your day? ");
+        dayQuestionLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
+        dayQuestionLabel.setForeground(new Colors().textColor);
+        dayQuestionLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        dayQuestionLabel.setVerticalAlignment(SwingConstants.TOP);
+        dayQuestionLabel.setBounds(0,60,300,600);
+
+        JLabel noteLabel = new JLabel();
+        noteLabel.setText("Note ");
+        noteLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
+        noteLabel.setForeground(new Colors().textColor);
+        noteLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        noteLabel.setVerticalAlignment(SwingConstants.TOP);
+        noteLabel.setBounds(40,160,300,600);
+
+        List<JLabel> labels = new ArrayList<>(Arrays.asList(
+                dayQuestionLabel, noteLabel
+        ));
+        return labels;
+    }
+
     private JLabel getCurrentMonthLabel(LocalDate todayDate) {
         currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
         currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
@@ -294,6 +424,50 @@ public class CalendarScreen extends JFrame {
 
         List<JButton> buttons = new ArrayList<>(Arrays.asList(prevMonthButton, nextMonthButton));
         return buttons;
+    }
+
+    private List<JButton> getDialogButtons() throws IOException {
+        saveButton = new JButton("Save");
+        saveButton.setFocusPainted(false);
+        saveButton.setVisible(true);
+        saveButton.setBackground(new Colors().secondaryBackgroundColor);
+        saveButton.setBorder(BorderFactory.createLineBorder(new Colors().secondaryBackgroundColor));
+        saveButton.setHorizontalAlignment(SwingConstants.CENTER);
+        saveButton.setBounds(80, 510, 100, 40);
+
+        List<JButton> buttons =  new ArrayList<>(Arrays.asList(
+                saveButton));
+        return buttons;
+
+
+
+    }
+
+    private JComboBox<String> getComboBox() {
+        String[] moods = {"Perfect", "Good", "Meh", "Bad", "Awful"};
+
+        moodComboBox = new JComboBox<>(moods);
+        moodComboBox.setFont(new Font("Georgia", Font.PLAIN, 20));
+        moodComboBox.setForeground(new Colors().textColor);
+        moodComboBox.setEditable(false);
+        moodComboBox.setSelectedIndex(0);
+        moodComboBox.setOpaque(false);
+        moodComboBox.setBounds(50,100,200,50);
+        moodComboBox.setBackground(Color.WHITE);
+        moodComboBox.setVisible(true);
+
+        return moodComboBox;
+    }
+
+    private JTextArea getTextField() {
+        JTextArea noteText = new JTextArea();
+        noteText.setFont(new Font("Georgia", Font.PLAIN, 20));
+        noteText.setForeground(new Colors().textColor);
+        noteText.setLineWrap(true);
+        noteText.setWrapStyleWord(true);
+        noteText.setBounds(10, 200, 265, 300);
+
+        return noteText;
     }
 
 }
