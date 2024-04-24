@@ -2,8 +2,8 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //new WelcomeScreen().loadScreen();
-        new CalendarScreen().loadScreen();
+        new WelcomeScreen().loadScreen();
+        //new CalendarScreen().loadScreen();
 
     }
 }

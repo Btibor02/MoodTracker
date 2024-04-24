@@ -14,6 +14,7 @@ public class CalendarScreen extends JFrame {
     JTable calendarTable = new JTable();
     LocalDate todayDate = LocalDate.now();
     JLabel currentMonthLabel = new JLabel();
+    JLabel currentYearLabel = new JLabel();
 
     public void loadScreen() {
 
@@ -22,6 +23,7 @@ public class CalendarScreen extends JFrame {
         JLabel appNameLabel = getLabels().get(0);
         JLabel welcomeLabel = getLabels().get(1);
         JLabel currentMonthLabel = getCurrentMonthLabel(todayDate);
+        JLabel currentYearLabel = getCurrentYearLabel(todayDate);
 
         JButton previousMonthButton = getButtons().get(0);
         JButton nextMonthButton = getButtons().get(1);
@@ -40,6 +42,7 @@ public class CalendarScreen extends JFrame {
         calendarScreen.add(appNameLabel);
         calendarScreen.add(welcomeLabel);
         calendarScreen.add(currentMonthLabel);
+        calendarScreen.add(currentYearLabel);
 
         calendarScreen.add(previousMonthButton);
         calendarScreen.add(nextMonthButton);
@@ -48,17 +51,19 @@ public class CalendarScreen extends JFrame {
             todayDate = todayDate.minusMonths(1);
             calendar(todayDate);
             getCurrentMonthLabel(todayDate);
+            getCurrentYearLabel(todayDate);
         });
 
         nextMonthButton.addActionListener(e -> {
             todayDate = todayDate.plusMonths(1);
             calendar(todayDate);
             getCurrentMonthLabel(todayDate);
+            getCurrentYearLabel(todayDate);
         });
 
     }
 
-    public void calendar(LocalDate todayDate) {
+    private void calendar(LocalDate todayDate) {
         calendar.setLayout(null);
         calendar.setBackground(new Color(169, 125, 40));
         calendar.setSize(350,360);
@@ -70,7 +75,7 @@ public class CalendarScreen extends JFrame {
         calendarScreen.add(calendar);
     }
 
-    public void dayNames() {
+    private void dayNames() {
         JPanel monday = new JPanel();
         JPanel tuesday = new JPanel();
         JPanel wednesday = new JPanel();
@@ -116,7 +121,7 @@ public class CalendarScreen extends JFrame {
         }
     }
 
-    public Integer days(LocalDate todayDate) {
+    private Integer days(LocalDate todayDate) {
 
         String firstDay = todayDate.withDayOfMonth(1).getDayOfWeek().name();
         return switch (firstDay) {
@@ -131,7 +136,7 @@ public class CalendarScreen extends JFrame {
         };
     }
 
-    public void makeDayPanels(LocalDate todayDate) {
+    private void makeDayPanels(LocalDate todayDate) {
         int firstDay = days(todayDate);
 
         String[] dayOfTheWeek = {"M", "T", "W", "T", "F", "S", "S"};
@@ -179,7 +184,7 @@ public class CalendarScreen extends JFrame {
         calendar.add(calendarTable);
     }
 
-    public void setUser (String username) {
+    void setUser(String username) {
         JLabel usernameLabel = new JLabel();
         if (username.isEmpty()) {
             usernameLabel.setText("Test");
@@ -193,7 +198,7 @@ public class CalendarScreen extends JFrame {
         calendarScreen.add(usernameLabel);
     }
 
-    public JLabel getCurrentMonthLabel(LocalDate todayDate) {
+    private JLabel getCurrentMonthLabel(LocalDate todayDate) {
         currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
         currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
         currentMonthLabel.setForeground(new Color(101, 85, 32));
@@ -202,8 +207,17 @@ public class CalendarScreen extends JFrame {
         return currentMonthLabel;
     }
 
+    private JLabel getCurrentYearLabel(LocalDate todayDate) {
+        currentYearLabel.setText(String.valueOf(todayDate.getYear()));
+        currentYearLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
+        currentYearLabel.setForeground(new Color(101, 85, 32));
+        currentYearLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        currentYearLabel.setBounds(0,150,414,100);
+        return currentYearLabel;
+    }
 
-    public List<JLabel> getLabels() {
+
+    private List<JLabel> getLabels() {
         JLabel appNameLabel = new JLabel();
         appNameLabel.setText("Mood Tracker");
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
@@ -222,13 +236,13 @@ public class CalendarScreen extends JFrame {
         return labels;
     }
 
-    public List<JButton> getButtons() {
+    private List<JButton> getButtons() {
         JButton prevMonthButton = new JButton();
         prevMonthButton.setText("<-");
         prevMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
         prevMonthButton.setForeground(new Color(101, 85, 32));;
         prevMonthButton.setBackground(new Color(236, 203, 124));
-        prevMonthButton.setBounds(70, 190, 70, 70 );
+        prevMonthButton.setBounds(60, 190, 70, 70 );
         prevMonthButton.setOpaque(false);
         prevMonthButton.setBorderPainted(false);
 
@@ -237,7 +251,7 @@ public class CalendarScreen extends JFrame {
         nextMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
         nextMonthButton.setForeground(new Color(101, 85, 32));;
         nextMonthButton.setBackground(new Color(236, 203, 124));
-        nextMonthButton.setBounds(270, 190, 70, 70 );
+        nextMonthButton.setBounds(280, 190, 70, 70 );
         nextMonthButton.setOpaque(false);
         nextMonthButton.setBorderPainted(false);
 
