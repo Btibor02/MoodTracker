@@ -3,18 +3,25 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class CalendarScreen extends JFrame {
+    Menu navigationMenu = new Menu();
+
     JFrame calendarScreen = new JFrame();
     JPanel calendar = new JPanel();
     JTable calendarTable = new JTable();
     LocalDate todayDate = LocalDate.now();
     JLabel currentMonthLabel = new JLabel();
     JLabel currentYearLabel = new JLabel();
+    JPanel menu = navigationMenu.navigationMenu("calendar");
+
+    public CalendarScreen() throws IOException {
+    }
 
     public void loadScreen() {
 
@@ -38,6 +45,7 @@ public class CalendarScreen extends JFrame {
         //calendarScreen.setLocationRelativeTo(null);
 
 
+        calendarScreen.add(menu);
 
         calendarScreen.add(appNameLabel);
         calendarScreen.add(welcomeLabel);
