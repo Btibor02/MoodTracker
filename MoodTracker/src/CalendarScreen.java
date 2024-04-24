@@ -76,18 +76,19 @@ public class CalendarScreen extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 int row = calendarTable.getSelectedRow();
                 int col = calendarTable.getSelectedColumn();
+                int selectedDay = (int) calendarTable.getValueAt(row, col);
 
-                DefaultTableModel model = (DefaultTableModel) calendarTable.getModel();
+                JDialog moodSelectorDialog = new JDialog();
+                moodSelectorDialog.setTitle("Select Mood");
+                moodSelectorDialog.setVisible(true);
+                moodSelectorDialog.setResizable(false);
+                moodSelectorDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+                moodSelectorDialog.setBounds(50,100,300,600);
 
-
-                if (model.getValueAt(row, col) != null && !model.getValueAt(row, col).toString().contains("html")) {
-                    System.out.println(model.getValueAt(row, col) + " <html> <p style=\"text-align:center;color:#009933;font-size: 20px;\"> ● " + "</p> </html>");
-                    model.setValueAt("<html>" + model.getValueAt(row, col) + "<p style=\"text-align:center;color:#009933;font-size: 20px;\"> ● " + "</p> </html>" ,row, col);
-                } else if (model.getValueAt(row, col).toString().contains("html")) {
-                    String text = (String) model.getValueAt(row,col);
-                    text = text.replaceAll("#.*?;", "a83232");
-                    System.out.println(text);
-                    model.setValueAt(text,row, col);
+                try {
+                    moodSelectorDialog.add(new SelectMood().moodSelector(todayDate, selectedDay));
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
                 }
 
 
