@@ -36,7 +36,7 @@ public class WelcomeScreen extends JFrame {
         welcomeScreen.getContentPane().setBackground(new Colors().backgroundColor);
         //welcomeScreen.setLocationRelativeTo(null);
 
-        loginButton.addActionListener(e -> {
+        loginButton.addActionListener(_ -> {
             String username, password, passwordDb = null, query;
             int notFound = 0;
 
@@ -57,7 +57,7 @@ public class WelcomeScreen extends JFrame {
                     welcomeScreen.setVisible(false);
                     CalendarScreen calendarScreen = new CalendarScreen();
                     calendarScreen.setUser(username);
-                    calendarScreen.loadScreen();
+                    calendarScreen.init();
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect username or password", "error", JOptionPane.ERROR_MESSAGE);
                 }
@@ -71,7 +71,7 @@ public class WelcomeScreen extends JFrame {
             }
         });
 
-        registerButton.addActionListener(e -> {
+        registerButton.addActionListener(_ -> {
             welcomeScreen.setVisible(false);
             new RegistrationScreen().init();
         });

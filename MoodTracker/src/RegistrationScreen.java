@@ -38,12 +38,12 @@ public class RegistrationScreen extends JFrame {
         registerScreen.getContentPane().setBackground(new Colors().backgroundColor);
         //registerScreen.setLocationRelativeTo(null);
 
-        loginButton.addActionListener(e -> {
+        loginButton.addActionListener(_ -> {
             registerScreen.setVisible(false);
             new WelcomeScreen().init();
         });
 
-        registerButton.addActionListener(e -> {
+        registerButton.addActionListener(_ -> {
             String username, query;
             char[] password, confirmPassword;
             username = usernameField.getText();
@@ -63,7 +63,7 @@ public class RegistrationScreen extends JFrame {
                 } else if (password.length < 8) {
                     JOptionPane.showMessageDialog(null, "Password must be at least 8 characters");
                 } else {
-                    query = "INSERT INTO user(username, password)" + "VALUES ('" + username + "', '" + password + "')";
+                    query = "INSERT INTO user(username, password)" + "VALUES ('" + username + "', '" + Arrays.toString(password) + "')";
                     st.execute(query);
                     usernameField.setText("");
                     passwordField.setText("");
@@ -73,7 +73,7 @@ public class RegistrationScreen extends JFrame {
                     registerScreen.setVisible(false);
                     CalendarScreen calendarScreen = new CalendarScreen();
                     calendarScreen.setUser(username);
-                    calendarScreen.loadScreen();
+                    calendarScreen.init();
                 }
             } catch (Exception err) {
                 System.out.println("Error! " + err.getMessage());
