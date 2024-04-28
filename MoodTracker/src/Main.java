@@ -4,8 +4,8 @@ import java.io.IOException;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException {
-        //new WelcomeScreen().loadScreen();
-        new CalendarScreen().loadScreen();
+        new WelcomeScreen().init();
+        //new CalendarScreen().loadScreen();
 
     }
 }

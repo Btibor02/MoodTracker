@@ -142,6 +142,7 @@ public class CalendarScreen extends JFrame {
 
     }
 
+
     public JPanel moodSelector(LocalDate selectedDate, Integer selectedDay) throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -268,8 +269,6 @@ public class CalendarScreen extends JFrame {
         model.setColumnIdentifiers(dayOfTheWeek);
         DefaultTableCellRenderer centerRender = new DefaultTableCellRenderer();
         centerRender.setHorizontalAlignment(SwingConstants.CENTER);
-
-
 
         calendarTable.setModel(model);
         for (int i = 0; i < model.getColumnCount(); i++) {
@@ -426,11 +425,7 @@ public class CalendarScreen extends JFrame {
         saveButton.setHorizontalAlignment(SwingConstants.CENTER);
         saveButton.setBounds(80, 510, 100, 40);
 
-
         return saveButton;
-
-
-
     }
 
     private JComboBox<String> getComboBox() {

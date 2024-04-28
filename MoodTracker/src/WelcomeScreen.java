@@ -1,28 +1,32 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 public class WelcomeScreen extends JFrame {
-    public void loadScreen() {
-        JLabel appNameLabel = getLabels().get(0);
-        JLabel loginLabel = getLabels().get(1);
-        JLabel usernameLabel = getLabels().get(2);
-        JLabel passwordLabel = getLabels().get(3);
-        JLabel registerLabel = getLabels().get(4);
+    private final JLabel appNameLabel = new JLabel("Mood Tracker");
+    private final JLabel loginLabel = new JLabel("Login");
+    private final JLabel usernameLabel = new JLabel("Username");
+    private final JLabel passwordLabel = new JLabel("Password");
+    private final JLabel registerLabel = new JLabel("I don't have an account");
 
-        JButton loginButton = getButtons().get(0);
-        JButton registerButton = getButtons().get(1);
+    private final JButton loginButton = new JButton("Login");
+    private final JButton registerButton = new JButton("Sign up");
 
-        JTextField usernameField = getTextFields().get(0);
-        JTextField passwordField = getTextFields().get(1);
+    private final JTextField usernameField = new JTextField();
+    private final JTextField passwordField = new JPasswordField();
 
-        JFrame welcomeScreen = new JFrame();
+    private final JFrame welcomeScreen = new JFrame();
+
+    public void init() {
+        loadScreen();
+    }
+
+    private void loadScreen() {
+        setLabels();
+        setButtons();
+        setTextFields();
+
         welcomeScreen.setLayout(null);
         welcomeScreen.setTitle("Login");
         welcomeScreen.setVisible(true);
@@ -44,118 +48,82 @@ public class WelcomeScreen extends JFrame {
         welcomeScreen.add(usernameField);
         welcomeScreen.add(passwordField);
 
-        loginButton.addActionListener(new ActionListener() {
+        loginButton.addActionListener(e -> {
+            String username, password, passwordDb = null, query;
+            int notFound = 0;
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String username, password, passwordDb = null, query;
-                int notFound = 0;
+            try {
+                Statement st = new DatabaseConnection().connection();
 
-                try {
-                    Statement st = new DatabaseConnection().connection();
+                username = usernameField.getText();
+                password = passwordField.getText();
 
-                    username = usernameField.getText();
-                    password = passwordField.getText();
-
-                    query = "SELECT * FROM user WHERE username = '" + username + "'";
-                    ResultSet rs = st.executeQuery(query);
-                    while (rs.next()) {
-                        passwordDb = rs.getString("password");
-                        notFound = 1;
-                    }
-                    if (notFound == 1 && passwordDb.equals(password)) {
-                        JOptionPane.showMessageDialog(null, "You have logged in!");
-                        welcomeScreen.setVisible(false);
-                        CalendarScreen calendarScreen = new CalendarScreen();
-                        calendarScreen.setUser(username);
-                        calendarScreen.loadScreen();
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Incorrect username or password", "error", JOptionPane.ERROR_MESSAGE);
-                    }
-
-                    st.execute(query);
-                    usernameField.setText("");
-                    passwordField.setText("");
-
-
-                } catch (Exception err) {
-                    System.out.println("Error!" + err.getMessage());
+                query = "SELECT * FROM user WHERE username = '" + username + "'";
+                ResultSet rs = st.executeQuery(query);
+                while (rs.next()) {
+                    passwordDb = rs.getString("password");
+                    notFound = 1;
                 }
+                if (notFound == 1 && passwordDb.equals(password)) {
+                    JOptionPane.showMessageDialog(null, "You have logged in!");
+                    welcomeScreen.setVisible(false);
+                    CalendarScreen calendarScreen = new CalendarScreen();
+                    calendarScreen.setUser(username);
+                    calendarScreen.loadScreen();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Incorrect username or password", "error", JOptionPane.ERROR_MESSAGE);
+                }
+
+                st.execute(query);
+                usernameField.setText("");
+                passwordField.setText("");
+
+            } catch (Exception err) {
+                System.out.println("Error!" + err.getMessage());
             }
         });
 
-        registerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                welcomeScreen.setVisible(false);
-                new RegistrationScreen().loadScreen();
-            }
+        registerButton.addActionListener(e -> {
+            welcomeScreen.setVisible(false);
+            new RegistrationScreen().loadScreen();
         });
 
     }
 
-
-    public List<JLabel> getLabels() {
-        JLabel appNameLabel = new JLabel();
-        appNameLabel.setText("Mood Tracker");
+    private void setLabels() {
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         appNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         appNameLabel.setBounds(0,100,414,100);
 
-        JLabel loginLabel = new JLabel();
-        loginLabel.setText("Login");
         loginLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         loginLabel.setForeground(new Colors().textColor);
         loginLabel.setBounds(50,200,414,100);
 
-        JLabel usernameLabel = new JLabel();
-        usernameLabel.setText("Username");
         usernameLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         usernameLabel.setBounds(50,260,414,100);
 
-        JLabel passwordLabel = new JLabel();
-        passwordLabel.setText("Password");
         passwordLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         passwordLabel.setBounds(50,350,414,100);
 
-        JLabel registerLabel = new JLabel();
-        registerLabel.setText("I don't have an account");
         registerLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         registerLabel.setBounds(0,630,414,100);
-
-        List<JLabel> labels = new ArrayList<>(Arrays.asList(
-                appNameLabel, loginLabel, usernameLabel, passwordLabel, registerLabel
-        ));
-        return labels;
     }
 
-    public List<JButton> getButtons() {
-        JButton loginButton = new JButton("Login");
+    private void setButtons() {
         loginButton.setBounds(50,470,120,40);
         loginButton.setBackground(new Colors().textColor);
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
-        JButton registerButton = new JButton("Sign up");
         registerButton.setBounds(100,700,200,50);
         registerButton.setBackground(new Colors().textColor);
         registerButton.setForeground(new Color(255, 255, 255));
         registerButton.setFont(new Font("Georgia", Font.PLAIN, 20));
-
-        List<JButton> buttons = new ArrayList<>(Arrays.asList(loginButton, registerButton));
-        return buttons;
     }
 
-    public List<JTextField> getTextFields() {
-        JTextField usernameText = new JTextField();
-        usernameText.setBounds(50,330,300,40);
-
-        JPasswordField passwordText = new JPasswordField();
-        passwordText.setBounds(50,420,300,40);
-
-        List<JTextField> textFields = new ArrayList<>(Arrays.asList(usernameText, passwordText));
-
-        return textFields;
+    private void setTextFields() {
+        usernameField.setBounds(50,330,300,40);
+        passwordField.setBounds(50,420,300,40);
     }
 }

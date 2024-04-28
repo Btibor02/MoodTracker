@@ -12,7 +12,7 @@ public class DatabaseConnection {
         SUser = "root";
         SPass = "";
 
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
         Statement st = con.createStatement();
 

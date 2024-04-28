@@ -5,3 +5,4 @@ public class Colors {
     Color textColor = new Color(101, 85, 32);
     Color secondaryBackgroundColor = new Color(236, 203, 124);
 }
+

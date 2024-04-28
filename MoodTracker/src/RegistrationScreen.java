@@ -52,7 +52,7 @@ public class RegistrationScreen extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 registerScreen.setVisible(false);
-                new WelcomeScreen().loadScreen();
+                new WelcomeScreen().init();
 
             }
         });
