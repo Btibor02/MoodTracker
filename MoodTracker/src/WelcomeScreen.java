@@ -36,18 +36,6 @@ public class WelcomeScreen extends JFrame {
         welcomeScreen.getContentPane().setBackground(new Colors().backgroundColor);
         //welcomeScreen.setLocationRelativeTo(null);
 
-        welcomeScreen.add(appNameLabel);
-        welcomeScreen.add(loginLabel);
-        welcomeScreen.add(usernameLabel);
-        welcomeScreen.add(passwordLabel);
-        welcomeScreen.add(registerLabel);
-
-        welcomeScreen.add(loginButton);
-        welcomeScreen.add(registerButton);
-
-        welcomeScreen.add(usernameField);
-        welcomeScreen.add(passwordField);
-
         loginButton.addActionListener(e -> {
             String username, password, passwordDb = null, query;
             int notFound = 0;
@@ -85,7 +73,7 @@ public class WelcomeScreen extends JFrame {
 
         registerButton.addActionListener(e -> {
             welcomeScreen.setVisible(false);
-            new RegistrationScreen().loadScreen();
+            new RegistrationScreen().init();
         });
 
     }
@@ -108,6 +96,12 @@ public class WelcomeScreen extends JFrame {
         registerLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         registerLabel.setBounds(0,630,414,100);
+
+        welcomeScreen.add(appNameLabel);
+        welcomeScreen.add(loginLabel);
+        welcomeScreen.add(usernameLabel);
+        welcomeScreen.add(passwordLabel);
+        welcomeScreen.add(registerLabel);
     }
 
     private void setButtons() {
@@ -120,10 +114,16 @@ public class WelcomeScreen extends JFrame {
         registerButton.setBackground(new Colors().textColor);
         registerButton.setForeground(new Color(255, 255, 255));
         registerButton.setFont(new Font("Georgia", Font.PLAIN, 20));
+
+        welcomeScreen.add(loginButton);
+        welcomeScreen.add(registerButton);
     }
 
     private void setTextFields() {
         usernameField.setBounds(50,330,300,40);
         passwordField.setBounds(50,420,300,40);
+
+        welcomeScreen.add(usernameField);
+        welcomeScreen.add(passwordField);
     }
 }
