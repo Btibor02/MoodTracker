@@ -40,7 +40,7 @@ public class CalendarScreen extends JFrame {
     int selectedRow;
     int selectedCol;
 
-    public CalendarScreen() throws IOException {
+    public CalendarScreen() {
     }
     public void init() {
         loadScreen();

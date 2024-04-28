@@ -1,4 +1,5 @@
 import javax.swing.*;
+<<<<<<< Updated upstream
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,6 +9,17 @@ import java.util.List;
 public class Menu {
     public JPanel navigationMenu(String currentScreen) throws IOException {
         JPanel panel = new JPanel();
+=======
+
+public class Menu {
+    private final JButton calendarButton = new JButton(new ImageIcon("images/calendarIcon.png"));
+    private final JButton otherButton = new JButton(new ImageIcon("images/analyticsIcon.png"));
+    private final JButton otherSecondButton = new JButton(new ImageIcon("images/settingIcon.png"));
+    private final JPanel panel = new JPanel();
+
+    public JPanel navigationMenu(String currentScreen) {
+        setButtons(currentScreen);
+>>>>>>> Stashed changes
         panel.setLayout(null);
         panel.setVisible(true);
         panel.setBackground(new Colors().secondaryBackgroundColor);
@@ -25,7 +37,11 @@ public class Menu {
         return panel;
     }
 
+<<<<<<< Updated upstream
     private List<JButton> getButtons(String currentScreen) throws IOException {
+=======
+    private void setButtons(String currentScreen) {
+>>>>>>> Stashed changes
         //https://www.flaticon.com/free-icons/calendar Calendar icons created by Freepik - Flaticon
         JButton calendarButton = new JButton(new ImageIcon("images/calendarIcon.png"));
         calendarButton.setFocusPainted(false);
@@ -56,9 +72,15 @@ public class Menu {
         otherSecondButton.setBounds(300, 10, 80, 80);
 
         switch(currentScreen) {
+<<<<<<< Updated upstream
             case "calendar": calendarButton.setBorder(BorderFactory.createLineBorder(new Color(101, 85, 32), 3));; break;
             case "analytics": otherButton.setBorder(BorderFactory.createLineBorder(new Color(101, 85, 32), 3));; break;
             case "settings": otherSecondButton.setBorder(BorderFactory.createLineBorder(new Color(101, 85, 32), 3));; break;
+=======
+            case "calendar": calendarButton.setBorder(BorderFactory.createLineBorder(new Colors().borderColor, 3)); break;
+            case "analytics": otherButton.setBorder(BorderFactory.createLineBorder(new Colors().borderColor, 3)); break;
+            case "settings": otherSecondButton.setBorder(BorderFactory.createLineBorder(new Colors().borderColor, 3)); break;
+>>>>>>> Stashed changes
         }
 
         List<JButton> buttons =  new ArrayList<>(Arrays.asList(
