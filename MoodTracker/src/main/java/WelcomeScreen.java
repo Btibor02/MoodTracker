@@ -16,9 +16,7 @@ public class WelcomeScreen extends JFrame {
     private final JTextField usernameField = new JTextField();
     private final JTextField passwordField = new JPasswordField();
 
-    private final JFrame welcomeScreen = new JFrame();
-
-    public void init() {
+    public WelcomeScreen() {
         loadScreen();
     }
 
@@ -26,14 +24,15 @@ public class WelcomeScreen extends JFrame {
         setLabels();
         setButtons();
         setTextFields();
+        appNameLabel.setName("appNameLabel");
 
-        welcomeScreen.setLayout(null);
-        welcomeScreen.setTitle("Login");
-        welcomeScreen.setVisible(true);
-        welcomeScreen.setResizable(false);
-        welcomeScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        welcomeScreen.setSize(414, 896);
-        welcomeScreen.getContentPane().setBackground(new Colors().backgroundColor);
+        setLayout(null);
+        setTitle("Login");
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(414, 896);
+        getContentPane().setBackground(new Colors().backgroundColor);
         //welcomeScreen.setLocationRelativeTo(null);
 
         loginButton.addActionListener(_ -> {
@@ -54,7 +53,7 @@ public class WelcomeScreen extends JFrame {
                 }
                 if (notFound == 1 && passwordDb.equals(password)) {
                     JOptionPane.showMessageDialog(null, "You have logged in!");
-                    welcomeScreen.setVisible(false);
+                    setVisible(false);
                     CalendarScreen calendarScreen = new CalendarScreen();
                     calendarScreen.setUser(username);
                     calendarScreen.init();
@@ -72,58 +71,67 @@ public class WelcomeScreen extends JFrame {
         });
 
         registerButton.addActionListener(_ -> {
-            welcomeScreen.setVisible(false);
+            setVisible(false);
             new RegistrationScreen().init();
         });
 
     }
 
     private void setLabels() {
+        appNameLabel.setName("appNameLabel");
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         appNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         appNameLabel.setBounds(0,100,414,100);
 
+        loginLabel.setName("loginLabel");
         loginLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         loginLabel.setForeground(new Colors().textColor);
         loginLabel.setBounds(50,200,414,100);
 
+        usernameLabel.setName("usernameLabel");
         usernameLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         usernameLabel.setBounds(50,260,414,100);
 
+        passwordLabel.setName("passwordLabel");
         passwordLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         passwordLabel.setBounds(50,350,414,100);
 
+        registerLabel.setName("registerLabel");
         registerLabel.setFont(new Font("Georgia", Font.PLAIN, 15));
         registerLabel.setHorizontalAlignment(SwingConstants.CENTER);
         registerLabel.setBounds(0,630,414,100);
 
-        welcomeScreen.add(appNameLabel);
-        welcomeScreen.add(loginLabel);
-        welcomeScreen.add(usernameLabel);
-        welcomeScreen.add(passwordLabel);
-        welcomeScreen.add(registerLabel);
+        add(appNameLabel);
+        add(loginLabel);
+        add(usernameLabel);
+        add(passwordLabel);
+        add(registerLabel);
     }
 
     private void setButtons() {
+        loginButton.setName("loginButton");
         loginButton.setBounds(50,470,120,40);
         loginButton.setBackground(new Colors().textColor);
         loginButton.setForeground(new Color(255, 255, 255));
         loginButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
+        registerButton.setName("registerButton");
         registerButton.setBounds(100,700,200,50);
         registerButton.setBackground(new Colors().textColor);
         registerButton.setForeground(new Color(255, 255, 255));
         registerButton.setFont(new Font("Georgia", Font.PLAIN, 20));
 
-        welcomeScreen.add(loginButton);
-        welcomeScreen.add(registerButton);
+        add(loginButton);
+        add(registerButton);
     }
 
     private void setTextFields() {
         usernameField.setBounds(50,330,300,40);
+        usernameField.setName("usernameField");
         passwordField.setBounds(50,420,300,40);
+        passwordField.setName("passwordField");
 
-        welcomeScreen.add(usernameField);
-        welcomeScreen.add(passwordField);
+        add(usernameField);
+        add(passwordField);
     }
 }
