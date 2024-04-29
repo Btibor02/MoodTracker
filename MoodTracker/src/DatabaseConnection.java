@@ -10,7 +10,7 @@ public class DatabaseConnection {
     public Statement connection() throws ClassNotFoundException, SQLException {
         SUrl = "jdbc:mysql://localhost:3306/moodtracker";
         SUser = "root";
-        SPass = "";
+        SPass = "1234";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection(SUrl, SUser, SPass);

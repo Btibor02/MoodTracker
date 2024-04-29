@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +46,21 @@ public class CalendarScreen extends JFrame {
     }
     public void init() {
         loadScreen();
+        loadMoodDataFromDatabase();
+    }
+    private void loadMoodDataFromDatabase() {
+        try {
+            Statement st = new DatabaseConnection().connection();
+            String query = "SELECT * FROM mood_data WHERE date = '" + todayDate.toString() + "'";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                LocalDate date = rs.getDate("date").toLocalDate();
+                String mood = rs.getString("mood");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadScreen() {
@@ -129,6 +146,14 @@ public class CalendarScreen extends JFrame {
 
         if (!selectedMood.isEmpty()) {
             model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+            try {
+                Statement st = new DatabaseConnection().connection();
+                String query = "INSERT INTO mood_data (date, mood) VALUES ('" + todayDate.toString() + "', '" + selectedMood + "')";
+                st.executeUpdate(query);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle exception
+            }
         }
     }
 
