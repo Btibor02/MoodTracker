@@ -72,7 +72,7 @@ public class WelcomeScreen extends JFrame {
 
         registerButton.addActionListener(_ -> {
             setVisible(false);
-            new RegistrationScreen().init();
+            new RegistrationScreen();
         });
 
     }

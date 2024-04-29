@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="WelcomeScreenTest" time="5.047" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="RegistrationScreenTest" time="7.978" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
     <property name="java.class.path" value="E:\Prog\Github\MoodTracker\MoodTracker\target\test-classes;E:\Prog\Github\MoodTracker\MoodTracker\target\classes;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing-junit\3.9.2\assertj-swing-junit-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing\3.9.2\assertj-swing-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-util\1.2.5\fest-util-1.2.5.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-reflect\1.4.1\fest-reflect-1.4.1.jar;C:\Users\Tibor\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Tibor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
-    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -59,7 +58,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testLogin" classname="WelcomeScreenTest" time="3.618"/>
-  <testcase name="testLabels" classname="WelcomeScreenTest" time="0.563"/>
-  <testcase name="testRegisterButton" classname="WelcomeScreenTest" time="0.847"/>
+  <testcase name="testRegistration" classname="RegistrationScreenTest" time="6.479"/>
+  <testcase name="testLabels" classname="RegistrationScreenTest" time="0.555"/>
+  <testcase name="testRegisterButton" classname="RegistrationScreenTest" time="0.835"/>
 </testsuite>
