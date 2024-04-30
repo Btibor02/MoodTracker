@@ -3,7 +3,9 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/moodtracker_skeleton/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MoodTracker/src" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/moodtracker_skeleton" />
+      <excludeFolder url="file://$MODULE_DIR$/moodtracker_skeleton/src" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

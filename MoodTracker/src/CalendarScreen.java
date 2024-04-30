@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -108,30 +109,88 @@ public class CalendarScreen extends JFrame {
         });
 
     }
+    public void SaveEmotions (String selectedMood) throws SQLException, ClassNotFoundException {
+        //Statement DBConnection = new DatabaseConnection().connection();
 
-    public void refreshTable(String selectedMood) {
-        moodSelectorDialog.setVisible(false);
-        String inputString = model.getValueAt(selectedRow, selectedCol).toString();
-        if (inputString.contains("html")) {
-            int startIndex = inputString.indexOf(">");
-            int endIndex = inputString.indexOf("<", startIndex);
-            inputString = inputString.substring(startIndex + 1, endIndex);
-        }
+        calendarTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                model = (DefaultTableModel) calendarTable.getModel();
+                int selectedRow = calendarTable.getSelectedRow();
+                int selectedColumn = calendarTable.getSelectedColumn();
+                int selectedDay;
+                String dateInput = calendarTable.getValueAt(selectedRow, selectedCol).toString();
+                if (dateInput.contains("html")) {
+                    int startIndex = dateInput.indexOf(">");
+                    int endIndex = dateInput.indexOf("<", startIndex);
+                    String day = dateInput.substring(startIndex + 1, endIndex);
+                    selectedDay = Integer.parseInt(day);
+                } else {
+                    selectedDay = (int) calendarTable.getValueAt(selectedRow, selectedColumn);
+                }
 
-        String color = switch (selectedMood) {
-            case "Perfect" -> "#02f702";
-            case "Good" -> "#0c400c";
-            case "Meh" -> "#104e85";
-            case "Bad" -> "#ba3811";
-            case "Awful" -> "#ba1111";
-            default -> "";
-        };
+                LocalDate date = LocalDate.now();
+                int selectedMonth = date.getMonthValue();
+                int selectedYear = date.getYear();
 
-        if (!selectedMood.isEmpty()) {
-            model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
-        }
+
+                LocalDate clickedDate = LocalDate.of(selectedYear, selectedMonth, selectedDay);
+
+                try{
+                    Statement connection = new DatabaseConnection().connection();
+
+                    String query = "INSERT INTO mood_entries (entry_date, mood) VALUES (?, ?)";
+                    PreparedStatement preparedStatement;
+                    preparedStatement = connection.preparedStatement(query);
+                    preparedStatement.setDate(1, java.sql.Date.valueOf(clickedDate));
+                    preparedStatement.setString(2, selectedMood);
+
+                    preparedStatement.executeUpdate();
+                }catch (SQLException | ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                {
+
+                }
+
+//                try {
+//                    Statement DBConnection = new DatabaseConnection().connection();
+//
+//                        queryMood = "INSERT INTO user (entry_date, mood) VALUES ('" + clickedDate + "', '" + selectedMood + "')";
+//                        DBConnection.execute(queryMood);
+//                } catch (ClassNotFoundException | SQLException ex) {
+//                    throw new RuntimeException(ex);
+//                }
+
+
+            }
+        });
+
     }
 
+        public void refreshTable (String selectedMood){
+            moodSelectorDialog.setVisible(false);
+            String inputString = model.getValueAt(selectedRow, selectedCol).toString();
+            if (inputString.contains("html")) {
+                int startIndex = inputString.indexOf(">");
+                int endIndex = inputString.indexOf("<", startIndex);
+                inputString = inputString.substring(startIndex + 1, endIndex);
+            }
+
+            String color = switch (selectedMood) {
+                case "Perfect" -> "#02f702";
+                case "Good" -> "#0c400c";
+                case "Meh" -> "#104e85";
+                case "Bad" -> "#ba3811";
+                case "Awful" -> "#ba1111";
+                default -> "";
+            };
+
+            if (!selectedMood.isEmpty()) {
+                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>", selectedRow, selectedCol);
+            }
+        }
+    }
     public JPanel moodSelector(LocalDate selectedDate, Integer selectedDay) throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -157,6 +216,13 @@ public class CalendarScreen extends JFrame {
 
         saveButton.addActionListener(_ -> {
             String selectedMood = (String) moodComboBox.getSelectedItem();
+                try {
+                    SaveEmotions(selectedMood);
+                } catch (SQLException | ClassNotFoundException e) {
+                    throw new RuntimeException(e);
+                }
+
+
             refreshTable(selectedMood);
         });
 
@@ -405,4 +471,4 @@ public class CalendarScreen extends JFrame {
         noteText.setBounds(10, 200, 265, 300);
     }
 
-}
+};

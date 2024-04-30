@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="953602d7-0b2e-41a4-9c4a-57663be37916" name="moodtracker@localhost Mapping">
+      <data-sources db="889146da-4458-4f6b-9ccd-7bcfcc38c7fd" ddl="cc356be7-639f-46c5-a723-9ebbbb207ba7" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+  </component>
+</project>
