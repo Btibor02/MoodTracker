@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3159eefb-a3b1-4518-a77e-6b40838d2b0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sqlDataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_3_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/mysql_connector_j_8_3_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="3159eefb-a3b1-4518-a77e-6b40838d2b0d" name="Changes" comment="Added saving emotions to DB (work in progress)">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Colors.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +78,7 @@
       <workItem from="1714414628736" duration="3255000" />
       <workItem from="1714425486648" duration="3489000" />
       <workItem from="1714431421284" duration="4219000" />
+      <workItem from="1714676979163" duration="2563000" />
     </task>
     <servers />
   </component>

@@ -136,32 +136,23 @@ public class CalendarScreen extends JFrame {
 
                 LocalDate clickedDate = LocalDate.of(selectedYear, selectedMonth, selectedDay);
 
-                try{
-                    Statement connection = new DatabaseConnection().connection();
+                    try{
+                    String insertQuery = "INSERT INTO user(date, mood) VALUES (?, ?)";
+                    String createQuery = "CREATE TABLE IF NOT EXISTS user (entry_date DATE, mood VARCHAR(55))";
 
-                    String query = "INSERT INTO mood_entries (entry_date, mood) VALUES (?, ?)";
-                    PreparedStatement preparedStatement;
-                    preparedStatement = connection.preparedStatement(query);
-                    preparedStatement.setDate(1, java.sql.Date.valueOf(clickedDate));
-                    preparedStatement.setString(2, selectedMood);
+                    Connection con = new DatabaseConnection().connectionSaveEmotions();
 
-                    preparedStatement.executeUpdate();
-                }catch (SQLException | ClassNotFoundException ex) {
-                    throw new RuntimeException(ex);
-                }
-                {
+                    //PreparedStatement preparedSt;
+                    PreparedStatement preparedSt = con.prepareStatement(createQuery);
+                    preparedSt.executeUpdate();
+                    preparedSt = con.prepareStatement(insertQuery);
+                    preparedSt.setDate(1, java.sql.Date.valueOf(clickedDate));
+                    preparedSt.setString(2, selectedMood);
 
-                }
-
-//                try {
-//                    Statement DBConnection = new DatabaseConnection().connection();
-//
-//                        queryMood = "INSERT INTO user (entry_date, mood) VALUES ('" + clickedDate + "', '" + selectedMood + "')";
-//                        DBConnection.execute(queryMood);
-//                } catch (ClassNotFoundException | SQLException ex) {
-//                    throw new RuntimeException(ex);
-//                }
-
+                    preparedSt.executeUpdate();
+                } catch (Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
 
             }
         });
@@ -190,7 +181,6 @@ public class CalendarScreen extends JFrame {
                 model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>", selectedRow, selectedCol);
             }
         }
-    }
     public JPanel moodSelector(LocalDate selectedDate, Integer selectedDay) throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -471,4 +461,4 @@ public class CalendarScreen extends JFrame {
         noteText.setBounds(10, 200, 265, 300);
     }
 
-};
+}
