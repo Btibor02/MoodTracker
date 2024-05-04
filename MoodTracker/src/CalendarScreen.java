@@ -51,7 +51,7 @@ public class CalendarScreen extends JFrame {
     private void loadMoodDataFromDatabase() {
         try {
             Statement st = new DatabaseConnection().connection();
-            String query = "SELECT * FROM mood_data WHERE date = '" + todayDate.toString() + "'";
+            String query = "SELECT * FROM user WHERE date = '" + todayDate.toString() + "'";
             ResultSet rs = st.executeQuery(query);
 
             while (rs.next()) {

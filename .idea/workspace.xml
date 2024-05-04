@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3159eefb-a3b1-4518-a77e-6b40838d2b0d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/MoodTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MoodTracker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +23,9 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -38,20 +34,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "AnalyticsScreen",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Prog/Github/MoodTracker",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;AnalyticsScreen&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Prog/Github/MoodTracker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -69,6 +66,11 @@
       <option name="presentableId" value="Default" />
       <updated>1713811393305</updated>
       <workItem from="1713811394400" duration="68000" />
+      <workItem from="1714754957968" duration="1022000" />
+      <workItem from="1714777248440" duration="2124000" />
+      <workItem from="1714819667830" duration="148000" />
+      <workItem from="1714824462608" duration="5109000" />
+      <workItem from="1714850936860" duration="2687000" />
     </task>
     <servers />
   </component>
