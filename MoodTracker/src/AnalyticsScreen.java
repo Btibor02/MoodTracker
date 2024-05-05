@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Connection;
 import java.time.LocalDate;
 
 public class analyticsScreen extends JFrame{
@@ -20,14 +21,16 @@ public class analyticsScreen extends JFrame{
     private final JPanel menu = navigationMenu.navigationMenu("analytics");
     private final LocalDate todayDate = LocalDate.now();
     private final JFrame analyticsScreen = new JFrame();
+    private String chosenMonth;
 
+    //initializes the screen
     public void init() {
         loadScreen();
     }
 
     //drop down box to choose the months they want to see the analytics for (mouse listener needed)
-    private void comboBoxMonths(){
-        String[] months = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+    public void comboBoxMonths(){
+        String[] months = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"};
 
         JComboBox<String> comboBoxMonths = new JComboBox<>(months);
         comboBoxMonths.setFont(new Font("Georgia", Font.PLAIN, 20));
@@ -48,6 +51,17 @@ public class analyticsScreen extends JFrame{
         });
 
     }
+
+    private void showAnalyticsForChosenMonth(String chosenMonth)throws SQLException, ClassNotFoundException{
+        try{
+        String monthQuery = "SELECT * FROM user WHERE MONTH(date) = ?";
+
+        Connection con = new DatabaseConnection().connectionSaveEmotions();
+        }catch{
+
+        }
+    }
+    //loads all the components
     private void loadScreen(){
 
         setButtons(); //WIP

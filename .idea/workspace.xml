@@ -5,12 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3159eefb-a3b1-4518-a77e-6b40838d2b0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/MoodTracker.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MoodTracker.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +73,8 @@
       <workItem from="1714857404560" duration="1077000" />
       <workItem from="1714861882404" duration="94000" />
       <workItem from="1714862087637" duration="24000" />
-      <workItem from="1714908298582" duration="2771000" />
+      <workItem from="1714908298582" duration="3390000" />
+      <workItem from="1714918279445" duration="4070000" />
     </task>
     <servers />
   </component>
