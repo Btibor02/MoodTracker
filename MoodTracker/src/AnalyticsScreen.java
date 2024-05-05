@@ -6,9 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 
-public class analyticsScreen extends JFrame{
+public class AnalyticsScreen extends JFrame{
     private final JLabel welcomeMsg = new JLabel("Welcome to your analytics page. ");
     private final JLabel welcomeMsg2 = new JLabel("Here you can see your mood trends. ");
     private final JLabel appNameLabel = new JLabel("Mood Tracker");
@@ -57,14 +58,14 @@ public class analyticsScreen extends JFrame{
         String monthQuery = "SELECT * FROM user WHERE MONTH(date) = ?";
 
         Connection con = new DatabaseConnection().connectionSaveEmotions();
-        }catch{
+        }catch(Exception e) {
 
         }
     }
     //loads all the components
     private void loadScreen(){
 
-        setButtons(); //WIP
+        //setButtons(); //WIP
         setLabels();
         analyticsScreen.setLayout(null);
         analyticsScreen.setSize(414, 896);
