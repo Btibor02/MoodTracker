@@ -6,4 +6,3 @@ public class Colors {
     Color secondaryBackgroundColor = new Color(236, 203, 124);
     Color borderColor = new Color(101, 85, 32);
 }
-

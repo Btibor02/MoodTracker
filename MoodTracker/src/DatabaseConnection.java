@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,7 +9,7 @@ public class DatabaseConnection {
     public Statement connection() throws ClassNotFoundException, SQLException {
         SUrl = "jdbc:mysql://localhost:3306/moodtracker";
         SUser = "root";
-        SPass = "1234";
+        SPass = "";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection con = DriverManager.getConnection(SUrl, SUser, SPass);
@@ -20,4 +19,13 @@ public class DatabaseConnection {
 
 
     }
+    public Connection connectionSaveEmotions() throws Exception {
+        SUrl = "jdbc:mysql://localhost:3306/moodtracker";
+        SUser = "root";
+        SPass = "";
+
+        Class.forName("com.mysql.cj.jdbc.Driver");
+        return DriverManager.getConnection(SUrl, SUser, SPass);
+    }
 }
+
