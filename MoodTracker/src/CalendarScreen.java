@@ -5,7 +5,8 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.sql.*;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -41,10 +42,25 @@ public class CalendarScreen extends JFrame {
     int selectedRow;
     int selectedCol;
 
-    public CalendarScreen() throws IOException {
+    public CalendarScreen() {
     }
     public void init() {
         loadScreen();
+        loadMoodDataFromDatabase();
+    }
+    private void loadMoodDataFromDatabase() {
+        try {
+            Statement st = new DatabaseConnection().connection();
+            String query = "SELECT * FROM user WHERE date = '" + todayDate.toString() + "'";
+            ResultSet rs = st.executeQuery(query);
+
+            while (rs.next()) {
+                LocalDate date = rs.getDate("date").toLocalDate();
+                String mood = rs.getString("mood");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void loadScreen() {
@@ -109,78 +125,38 @@ public class CalendarScreen extends JFrame {
         });
 
     }
-    public void SaveEmotions (String selectedMood) throws SQLException, ClassNotFoundException {
-        //Statement DBConnection = new DatabaseConnection().connection();
 
-        calendarTable.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                model = (DefaultTableModel) calendarTable.getModel();
-                int selectedRow = calendarTable.getSelectedRow();
-                int selectedColumn = calendarTable.getSelectedColumn();
-                int selectedDay;
-                String dateInput = calendarTable.getValueAt(selectedRow, selectedCol).toString();
-                if (dateInput.contains("html")) {
-                    int startIndex = dateInput.indexOf(">");
-                    int endIndex = dateInput.indexOf("<", startIndex);
-                    String day = dateInput.substring(startIndex + 1, endIndex);
-                    selectedDay = Integer.parseInt(day);
-                } else {
-                    selectedDay = (int) calendarTable.getValueAt(selectedRow, selectedColumn);
-                }
+    public void refreshTable(String selectedMood) {
+        moodSelectorDialog.setVisible(false);
+        String inputString = model.getValueAt(selectedRow, selectedCol).toString();
+        if (inputString.contains("html")) {
+            int startIndex = inputString.indexOf(">");
+            int endIndex = inputString.indexOf("<", startIndex);
+            inputString = inputString.substring(startIndex + 1, endIndex);
+        }
 
-                LocalDate date = LocalDate.now();
-                int selectedMonth = date.getMonthValue();
-                int selectedYear = date.getYear();
+        String color = switch (selectedMood) {
+            case "Perfect" -> "#02f702";
+            case "Good" -> "#0c400c";
+            case "Meh" -> "#104e85";
+            case "Bad" -> "#ba3811";
+            case "Awful" -> "#ba1111";
+            default -> "";
+        };
 
-
-                LocalDate clickedDate = LocalDate.of(selectedYear, selectedMonth, selectedDay);
-
-                    try{
-                    String insertQuery = "INSERT INTO user(date, mood) VALUES (?, ?)";
-                    String createQuery = "CREATE TABLE IF NOT EXISTS user (entry_date DATE, mood VARCHAR(55))";
-
-                    Connection con = new DatabaseConnection().connectionSaveEmotions();
-
-                    //PreparedStatement preparedSt;
-                    PreparedStatement preparedSt = con.prepareStatement(createQuery);
-                    preparedSt.executeUpdate();
-                    preparedSt = con.prepareStatement(insertQuery);
-                    preparedSt.setDate(1, java.sql.Date.valueOf(clickedDate));
-                    preparedSt.setString(2, selectedMood);
-
-                    preparedSt.executeUpdate();
-                } catch (Exception ex) {
-                        throw new RuntimeException(ex);
-                    }
-
-            }
-        });
-
-    }
-
-        public void refreshTable (String selectedMood){
-            moodSelectorDialog.setVisible(false);
-            String inputString = model.getValueAt(selectedRow, selectedCol).toString();
-            if (inputString.contains("html")) {
-                int startIndex = inputString.indexOf(">");
-                int endIndex = inputString.indexOf("<", startIndex);
-                inputString = inputString.substring(startIndex + 1, endIndex);
-            }
-
-            String color = switch (selectedMood) {
-                case "Perfect" -> "#02f702";
-                case "Good" -> "#0c400c";
-                case "Meh" -> "#104e85";
-                case "Bad" -> "#ba3811";
-                case "Awful" -> "#ba1111";
-                default -> "";
-            };
-
-            if (!selectedMood.isEmpty()) {
-                model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>", selectedRow, selectedCol);
+        if (!selectedMood.isEmpty()) {
+            model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
+            try {
+                Statement st = new DatabaseConnection().connection();
+                String query = "INSERT INTO mood_data (date, mood) VALUES ('" + todayDate.toString() + "', '" + selectedMood + "')";
+                st.executeUpdate(query);
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle exception
             }
         }
+    }
+
     public JPanel moodSelector(LocalDate selectedDate, Integer selectedDay) throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -206,13 +182,6 @@ public class CalendarScreen extends JFrame {
 
         saveButton.addActionListener(_ -> {
             String selectedMood = (String) moodComboBox.getSelectedItem();
-                try {
-                    SaveEmotions(selectedMood);
-                } catch (SQLException | ClassNotFoundException e) {
-                    throw new RuntimeException(e);
-                }
-
-
             refreshTable(selectedMood);
         });
 
