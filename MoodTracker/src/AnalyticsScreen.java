@@ -3,11 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AnalyticsScreen extends JFrame{
     private final JLabel welcomeMsg = new JLabel("Welcome to your analytics page. ");
@@ -50,17 +52,6 @@ public class AnalyticsScreen extends JFrame{
                 String chosenMonth = comboBoxMonths.getSelectedItem().toString();
             }
         });
-
-    }
-
-    private void showAnalyticsForChosenMonth(String chosenMonth)throws SQLException, ClassNotFoundException{
-        try{
-        String monthQuery = "SELECT * FROM user WHERE MONTH(date) = ?";
-
-        Connection con = new DatabaseConnection().connectionSaveEmotions();
-        }catch(Exception e) {
-
-        }
     }
     //loads all the components
     private void loadScreen(){
@@ -76,6 +67,29 @@ public class AnalyticsScreen extends JFrame{
         analyticsScreen.getContentPane().setBackground(new Colors().backgroundColor);
 
         analyticsScreen.add(menu);
+    }
+    //Method to get retrieve mood from the DB
+    private void getMoodFromDB(String chosenMonth)throws SQLException, ClassNotFoundException{
+        try{
+            String monthQuery = "SELECT mood FROM user WHERE MONTH(date) = ?";
+
+            Connection con = new DatabaseConnection().preparedConnection();
+            PreparedStatement preparedSt = con.prepareStatement(monthQuery);
+            preparedSt.setString(1, chosenMonth);
+            try (ResultSet resultSet = preparedSt.executeQuery()){
+                List<String> retrievedMoods = new ArrayList<>();
+                while (resultSet.next()){
+                    String moodFromDB = resultSet.getString("mood");
+                    retrievedMoods.add(moodFromDB);
+                }
+            }
+        }catch(Exception ignored) {
+        }
+    }
+    //Method to analyze data
+    //
+    private void analyzeData(List<String> moodData){
+
     }
     private void setLabels() {
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 30));

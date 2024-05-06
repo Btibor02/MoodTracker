@@ -19,7 +19,7 @@ public class DatabaseConnection {
 
 
     }
-    public Connection connectionSaveEmotions() throws Exception {
+    public Connection preparedConnection() throws Exception {
         SUrl = "jdbc:mysql://localhost:3306/moodtracker";
         SUser = "root";
         SPass = "";
