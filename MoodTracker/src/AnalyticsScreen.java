@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.text.DecimalFormat;
 
 public class AnalyticsScreen extends JFrame{
     private final JLabel welcomeMsg = new JLabel("Welcome to your analytics page. ");
@@ -68,7 +69,7 @@ public class AnalyticsScreen extends JFrame{
 
         analyticsScreen.add(menu);
     }
-    //Method to get retrieve mood from the DB
+    //Method to retrieve mood from the DB
     private void getMoodFromDB(String chosenMonth)throws SQLException, ClassNotFoundException{
         try{
             String monthQuery = "SELECT mood FROM user WHERE MONTH(date) = ?";
@@ -86,10 +87,41 @@ public class AnalyticsScreen extends JFrame{
         }catch(Exception ignored) {
         }
     }
+    List<Integer> retrievedMoodsInt = new ArrayList<>();
+    double averageMonthMood = 0;
     //Method to analyze data
-    //
-    private void analyzeData(List<String> moodData){
+    private void analyzeData(List<String> retrievedMoods){
+        //get mood to INT
+        for (String mood : retrievedMoods){
+            retrievedMoodsInt.add(moodToInt(mood));
+        }
+        //get avg mood
+       averageMonthMood = getAverageMood(retrievedMoodsInt);
+    }
 
+    private double getAverageMood(List<Integer> retrievedMoodsInt){
+    double sum = 0;
+    for (int mood : retrievedMoodsInt){
+        sum += mood;
+    }
+    // returns a double with only two numbers in the decimal position
+    double formattedAverage = sum / retrievedMoodsInt.size();
+    DecimalFormat df = new DecimalFormat("#.##");
+    return Float.parseFloat(df.format(formattedAverage));
+    }
+
+    //Get an int value for moods to get
+    // an avg mood per month.
+    private int moodToInt(String mood) {
+        int value = 0;
+        return switch (mood) {
+            case "Perfect" -> 5;
+            case "Good" -> 4;
+            case "Meh" -> 3;
+            case "Bad" -> 2;
+            case "Awful" -> 1;
+            default -> value;
+        };
     }
     private void setLabels() {
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 30));

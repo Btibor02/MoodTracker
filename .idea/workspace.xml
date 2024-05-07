@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3159eefb-a3b1-4518-a77e-6b40838d2b0d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Colors.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Colors.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/DatabaseConnection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MoodTracker/src/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/Menu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +76,8 @@
       <workItem from="1714908298582" duration="3390000" />
       <workItem from="1714918279445" duration="4070000" />
       <workItem from="1714994731760" duration="966000" />
-      <workItem from="1715033628775" duration="2671000" />
+      <workItem from="1715033628775" duration="2982000" />
+      <workItem from="1715121316876" duration="2133000" />
     </task>
     <servers />
   </component>
