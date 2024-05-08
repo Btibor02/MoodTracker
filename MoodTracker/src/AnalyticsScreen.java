@@ -51,6 +51,11 @@ public class AnalyticsScreen extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 String chosenMonth = comboBoxMonths.getSelectedItem().toString();
+                try {
+                    getMoodFromDB(chosenMonth);
+                } catch (SQLException | ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
     }
@@ -70,6 +75,7 @@ public class AnalyticsScreen extends JFrame{
         analyticsScreen.add(menu);
     }
     //Method to retrieve mood from the DB
+    List<String> retrievedMoods = new ArrayList<>();
     private void getMoodFromDB(String chosenMonth)throws SQLException, ClassNotFoundException{
         try{
             String monthQuery = "SELECT mood FROM user WHERE MONTH(date) = ?";
@@ -78,7 +84,6 @@ public class AnalyticsScreen extends JFrame{
             PreparedStatement preparedSt = con.prepareStatement(monthQuery);
             preparedSt.setString(1, chosenMonth);
             try (ResultSet resultSet = preparedSt.executeQuery()){
-                List<String> retrievedMoods = new ArrayList<>();
                 while (resultSet.next()){
                     String moodFromDB = resultSet.getString("mood");
                     retrievedMoods.add(moodFromDB);
