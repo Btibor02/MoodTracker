@@ -56,7 +56,7 @@ public class WelcomeScreen extends JFrame {
                     setVisible(false);
                     CalendarScreen calendarScreen = new CalendarScreen();
                     calendarScreen.setUser(username);
-                    calendarScreen.init();
+                    new CalendarScreen();
                 } else {
                     JOptionPane.showMessageDialog(null, "Incorrect username or password", "error", JOptionPane.ERROR_MESSAGE);
                 }

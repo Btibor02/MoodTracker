@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="CalendarScreenTest" time="2.269" tests="3" errors="3" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="22"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1250"/>
+    <property name="java.class.path" value="E:\Prog\Github\MoodTracker\MoodTracker\target\test-classes;E:\Prog\Github\MoodTracker\MoodTracker\target\classes;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing-junit\3.9.2\assertj-swing-junit-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing\3.9.2\assertj-swing-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-util\1.2.5\fest-util-1.2.5.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-reflect\1.4.1\fest-reflect-1.4.1.jar;C:\Users\Tibor\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Tibor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="Europe/Berlin"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="java.vm.specification.version" value="22"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="HU"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
+    <property name="sun.java.command" value="C:\Users\Tibor\AppData\Local\Temp\surefire11561624645437548837\surefirebooter-20240524155639112_3.jar C:\Users\Tibor\AppData\Local\Temp\surefire11561624645437548837 2024-05-24T15-56-39_017-jvmRun1 surefire-20240524155639112_1tmp surefire_0-20240524155639112_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="E:\Prog\Github\MoodTracker\MoodTracker\target\test-classes;E:\Prog\Github\MoodTracker\MoodTracker\target\classes;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing-junit\3.9.2\assertj-swing-junit-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing\3.9.2\assertj-swing-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-util\1.2.5\fest-util-1.2.5.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-reflect\1.4.1\fest-reflect-1.4.1.jar;C:\Users\Tibor\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Tibor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Tibor"/>
+    <property name="user.language" value="hu"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-04-16"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-22"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="E:\Prog\Github\MoodTracker\MoodTracker"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\Tibor\AppData\Local\Temp\surefire11561624645437548837\surefirebooter-20240524155639112_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="22.0.1+8-16"/>
+    <property name="user.name" value="Tibor"/>
+    <property name="stdout.encoding" value="Cp1250"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\Tibor\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Tibor\AppData\Local\Temp\"/>
+    <property name="java.version" value="22.0.1"/>
+    <property name="user.dir" value="E:\Prog\Github\MoodTracker\MoodTracker"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1250"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-22\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\dotnet\;C:\Program Files\apache-maven-3.9.6\bin;C:\Program Files\Java\jdk-22\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Users\Tibor\AppData\Local\Microsoft\WindowsApps;C:\Users\Tibor\AppData\Local\GitHubDesktop\bin;C:\Users\Tibor\.dotnet\tools;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1250"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="22.0.1+8-16"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="66.0"/>
+  </properties>
+  <testcase name="testRegistration" classname="CalendarScreenTest" time="1.049">
+    <error message="Unable to find component using matcher org.assertj.swing.core.NameMatcher[name=&apos;usernameField&apos;, type=javax.swing.text.JTextComponent, requireShowing=true].&#10;&#10;Component hierarchy:&#10;CalendarScreen[name=&apos;frame0&apos;, title=&apos;Calendar&apos;, enabled=true, visible=true, showing=true]&#10;  javax.swing.JRootPane[]&#10;    javax.swing.JPanel[name=&apos;null.glassPane&apos;]&#10;    javax.swing.JLayeredPane[]&#10;      javax.swing.JPanel[name=&apos;null.contentPane&apos;]&#10;        javax.swing.JPanel[name=null]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;M&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;T&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;W&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;T&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;F&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;S&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;S&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JTable[name=null, rowCount=5, columnCount=7, enabled=true, visible=true, showing=true]&#10;            javax.swing.CellRendererPane[,0,0,0x0,hidden]&#10;        javax.swing.JLabel[name=&apos;appNameLabel&apos;, text=&apos;Mood Tracker&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JLabel[name=&apos;welcomeLabel&apos;, text=&apos;Welcome back &apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JLabel[name=&apos;currentYearLabel&apos;, text=&apos;2024&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JLabel[name=&apos;currentMonthLabel&apos;, text=&apos;MAY&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JButton[name=&apos;prevMonthButton&apos;, text=&apos;&lt;-&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JButton[name=&apos;nextMonthButton&apos;, text=&apos;-&gt;&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JPanel[name=null]&#10;          javax.swing.JButton[name=null, text=&apos;&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JButton[name=null, text=&apos;&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JButton[name=null, text=&apos;&apos;, enabled=true, visible=true, showing=true]&#10;" type="org.assertj.swing.exception.ComponentLookupException"><![CDATA[org.assertj.swing.exception.ComponentLookupException: 
+Unable to find component using matcher org.assertj.swing.core.NameMatcher[name='usernameField', type=javax.swing.text.JTextComponent, requireShowing=true].
+
+Component hierarchy:
+CalendarScreen[name='frame0', title='Calendar', enabled=true, visible=true, showing=true]
+  javax.swing.JRootPane[]
+    javax.swing.JPanel[name='null.glassPane']
+    javax.swing.JLayeredPane[]
+      javax.swing.JPanel[name='null.contentPane']
+        javax.swing.JPanel[name=null]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='M', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='T', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='W', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='T', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='F', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='S', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='S', enabled=true, visible=true, showing=true]
+          javax.swing.JTable[name=null, rowCount=5, columnCount=7, enabled=true, visible=true, showing=true]
+            javax.swing.CellRendererPane[,0,0,0x0,hidden]
+        javax.swing.JLabel[name='appNameLabel', text='Mood Tracker', enabled=true, visible=true, showing=true]
+        javax.swing.JLabel[name='welcomeLabel', text='Welcome back ', enabled=true, visible=true, showing=true]
+        javax.swing.JLabel[name='currentYearLabel', text='2024', enabled=true, visible=true, showing=true]
+        javax.swing.JLabel[name='currentMonthLabel', text='MAY', enabled=true, visible=true, showing=true]
+        javax.swing.JButton[name='prevMonthButton', text='<-', enabled=true, visible=true, showing=true]
+        javax.swing.JButton[name='nextMonthButton', text='->', enabled=true, visible=true, showing=true]
+        javax.swing.JPanel[name=null]
+          javax.swing.JButton[name=null, text='', enabled=true, visible=true, showing=true]
+          javax.swing.JButton[name=null, text='', enabled=true, visible=true, showing=true]
+          javax.swing.JButton[name=null, text='', enabled=true, visible=true, showing=true]
+
+	at org.assertj.swing.core.BasicComponentFinder.componentNotFound(BasicComponentFinder.java:287)
+	at org.assertj.swing.core.BasicComponentFinder.find(BasicComponentFinder.java:272)
+	at org.assertj.swing.core.BasicComponentFinder.find(BasicComponentFinder.java:265)
+	at org.assertj.swing.core.BasicComponentFinder.findByName(BasicComponentFinder.java:200)
+	at org.assertj.swing.fixture.AbstractContainerFixture.findByName(AbstractContainerFixture.java:641)
+	at org.assertj.swing.fixture.AbstractContainerFixture.textBox(AbstractContainerFixture.java:560)
+	at CalendarScreenTest.testRegistration(CalendarScreenTest.java:46)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></error>
+  </testcase>
+  <testcase name="testLabels" classname="CalendarScreenTest" time="0.553">
+    <error message="Unable to obtain LocalDate from TemporalAccessor: MAY of type java.time.Month" type="java.time.DateTimeException"><![CDATA[java.time.DateTimeException: Unable to obtain LocalDate from TemporalAccessor: MAY of type java.time.Month
+	at java.base/java.time.LocalDate.from(LocalDate.java:403)
+	at CalendarScreenTest.testLabels(CalendarScreenTest.java:32)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></error>
+  </testcase>
+  <testcase name="testRegisterButton" classname="CalendarScreenTest" time="0.561">
+    <error message="Unable to find component using matcher org.assertj.swing.core.NameMatcher[name=&apos;registerButton&apos;, type=javax.swing.JButton, requireShowing=true].&#10;&#10;Component hierarchy:&#10;CalendarScreen[name=&apos;frame1&apos;, title=&apos;Calendar&apos;, enabled=true, visible=true, showing=true]&#10;  javax.swing.JRootPane[]&#10;    javax.swing.JPanel[name=&apos;null.glassPane&apos;]&#10;    javax.swing.JLayeredPane[]&#10;      javax.swing.JPanel[name=&apos;null.contentPane&apos;]&#10;        javax.swing.JPanel[name=null]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;M&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;T&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;W&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;T&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;F&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;S&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JPanel[name=null]&#10;            javax.swing.JLabel[name=null, text=&apos;S&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JTable[name=null, rowCount=5, columnCount=7, enabled=true, visible=true, showing=true]&#10;            javax.swing.CellRendererPane[,0,0,0x0,hidden]&#10;        javax.swing.JLabel[name=&apos;appNameLabel&apos;, text=&apos;Mood Tracker&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JLabel[name=&apos;welcomeLabel&apos;, text=&apos;Welcome back &apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JLabel[name=&apos;currentYearLabel&apos;, text=&apos;2024&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JLabel[name=&apos;currentMonthLabel&apos;, text=&apos;MAY&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JButton[name=&apos;prevMonthButton&apos;, text=&apos;&lt;-&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JButton[name=&apos;nextMonthButton&apos;, text=&apos;-&gt;&apos;, enabled=true, visible=true, showing=true]&#10;        javax.swing.JPanel[name=null]&#10;          javax.swing.JButton[name=null, text=&apos;&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JButton[name=null, text=&apos;&apos;, enabled=true, visible=true, showing=true]&#10;          javax.swing.JButton[name=null, text=&apos;&apos;, enabled=true, visible=true, showing=true]&#10;" type="org.assertj.swing.exception.ComponentLookupException"><![CDATA[org.assertj.swing.exception.ComponentLookupException: 
+Unable to find component using matcher org.assertj.swing.core.NameMatcher[name='registerButton', type=javax.swing.JButton, requireShowing=true].
+
+Component hierarchy:
+CalendarScreen[name='frame1', title='Calendar', enabled=true, visible=true, showing=true]
+  javax.swing.JRootPane[]
+    javax.swing.JPanel[name='null.glassPane']
+    javax.swing.JLayeredPane[]
+      javax.swing.JPanel[name='null.contentPane']
+        javax.swing.JPanel[name=null]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='M', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='T', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='W', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='T', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='F', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='S', enabled=true, visible=true, showing=true]
+          javax.swing.JPanel[name=null]
+            javax.swing.JLabel[name=null, text='S', enabled=true, visible=true, showing=true]
+          javax.swing.JTable[name=null, rowCount=5, columnCount=7, enabled=true, visible=true, showing=true]
+            javax.swing.CellRendererPane[,0,0,0x0,hidden]
+        javax.swing.JLabel[name='appNameLabel', text='Mood Tracker', enabled=true, visible=true, showing=true]
+        javax.swing.JLabel[name='welcomeLabel', text='Welcome back ', enabled=true, visible=true, showing=true]
+        javax.swing.JLabel[name='currentYearLabel', text='2024', enabled=true, visible=true, showing=true]
+        javax.swing.JLabel[name='currentMonthLabel', text='MAY', enabled=true, visible=true, showing=true]
+        javax.swing.JButton[name='prevMonthButton', text='<-', enabled=true, visible=true, showing=true]
+        javax.swing.JButton[name='nextMonthButton', text='->', enabled=true, visible=true, showing=true]
+        javax.swing.JPanel[name=null]
+          javax.swing.JButton[name=null, text='', enabled=true, visible=true, showing=true]
+          javax.swing.JButton[name=null, text='', enabled=true, visible=true, showing=true]
+          javax.swing.JButton[name=null, text='', enabled=true, visible=true, showing=true]
+
+	at org.assertj.swing.core.BasicComponentFinder.componentNotFound(BasicComponentFinder.java:287)
+	at org.assertj.swing.core.BasicComponentFinder.find(BasicComponentFinder.java:272)
+	at org.assertj.swing.core.BasicComponentFinder.find(BasicComponentFinder.java:265)
+	at org.assertj.swing.core.BasicComponentFinder.findByName(BasicComponentFinder.java:200)
+	at org.assertj.swing.fixture.AbstractContainerFixture.findByName(AbstractContainerFixture.java:641)
+	at org.assertj.swing.fixture.AbstractContainerFixture.button(AbstractContainerFixture.java:143)
+	at CalendarScreenTest.testRegisterButton(CalendarScreenTest.java:59)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:316)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:240)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:214)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:155)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+]]></error>
+  </testcase>
+</testsuite>

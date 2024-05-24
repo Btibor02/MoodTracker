@@ -34,17 +34,12 @@ public class CalendarScreen extends JFrame {
     private final JTable calendarTable = new JTable();
     private LocalDate todayDate = LocalDate.now();
     private JDialog moodSelectorDialog;
-    private final JFrame calendarScreen = new JFrame();
     private DefaultTableModel model;
 
     int selectedRow;
     int selectedCol;
 
-    public CalendarScreen() {
-    }
-    public void init() {
-        loadScreen();
-    }
+    public CalendarScreen() { loadScreen();}
 
     private void loadScreen() {
         calendar(todayDate);
@@ -52,16 +47,16 @@ public class CalendarScreen extends JFrame {
         setDateLabel(todayDate);
         setButtons();
 
-        calendarScreen.setLayout(null);
-        calendarScreen.setTitle("Calendar");
-        calendarScreen.setVisible(true);
-        calendarScreen.setResizable(false);
-        calendarScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        calendarScreen.setSize(414, 896);
-        calendarScreen.getContentPane().setBackground(new Colors().backgroundColor);
+        setLayout(null);
+        setTitle("Calendar");
+        setVisible(true);
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setSize(414, 896);
+        getContentPane().setBackground(new Colors().backgroundColor);
         //calendarScreen.setLocationRelativeTo(null);
 
-        calendarScreen.add(menu);
+        add(menu);
 
         prevMonthButton.addActionListener(_ ->  {
             todayDate = todayDate.minusMonths(1);
@@ -93,6 +88,7 @@ public class CalendarScreen extends JFrame {
                 }
 
                 moodSelectorDialog = new JDialog();
+                moodSelectorDialog.setName("moodSelectorDialog");
                 moodSelectorDialog.setTitle("Select Mood");
                 moodSelectorDialog.setVisible(true);
                 moodSelectorDialog.setResizable(false);
@@ -135,6 +131,7 @@ public class CalendarScreen extends JFrame {
     public JPanel moodSelector(LocalDate selectedDate, Integer selectedDay) throws IOException {
         JPanel panel = new JPanel();
         panel.setLayout(null);
+        panel.setName("moodSelectorPanel");
         panel.setVisible(true);
         panel.setBackground(new Colors().backgroundColor);
         panel.setBounds(0,760,300,600);
@@ -165,6 +162,7 @@ public class CalendarScreen extends JFrame {
 
     private void calendar(LocalDate todayDate) {
         calendar.setLayout(null);
+        calendar.setName("calendar");
         calendar.setBackground(new Color(169, 125, 40));
         calendar.setSize(350,360);
         calendar.setVisible(true);
@@ -172,25 +170,39 @@ public class CalendarScreen extends JFrame {
 
         dayNames();
         makeDayPanels(todayDate);
-        calendarScreen.add(calendar);
+        add(calendar);
     }
 
     private void dayNames() {
         JPanel monday = new JPanel();
+        monday.setName("mondayPanel");
         JPanel tuesday = new JPanel();
+        tuesday.setName("tuesdayPanel");
         JPanel wednesday = new JPanel();
+        wednesday.setName("wednesdayPanel");
         JPanel thursday = new JPanel();
+        thursday.setName("thursdayPanel");
         JPanel friday = new JPanel();
+        friday.setName("fridayPanel");
         JPanel saturday = new JPanel();
+        saturday.setName("saturdayPanel");
         JPanel sunday = new JPanel();
+        sunday.setName("sundayPanel");
 
         JLabel mondayLabel = new JLabel("M");
+        mondayLabel.setName("mondayLabel");
         JLabel tuesdayLabel = new JLabel("T");
+        tuesdayLabel.setName("tuesdayLabel");
         JLabel wednesdayLabel = new JLabel("W");
+        wednesdayLabel.setName("wednesdayLabel");
         JLabel thursdayLabel = new JLabel("T");
+        thursdayLabel.setName("thursdayLabel");
         JLabel fridayLabel = new JLabel("F");
+        fridayLabel.setName("fridayLabel");
         JLabel saturdayLabel = new JLabel("S");
+        saturdayLabel.setName("saturdayLabel");
         JLabel sundayLabel = new JLabel("S");
+        sundayLabel.setName("sundayLabel");
 
 
         List<JPanel> dayNames = new ArrayList<>(Arrays.asList(
@@ -248,6 +260,7 @@ public class CalendarScreen extends JFrame {
             }
         };
 
+        calendarTable.setName("calendarTable");
         calendarTable.setRowSelectionAllowed(false);
         calendarTable.setCellSelectionEnabled(false);
         model.setColumnIdentifiers(dayOfTheWeek);
@@ -289,14 +302,16 @@ public class CalendarScreen extends JFrame {
         } else {
             usernameLabel.setText(username);
         }
+        usernameLabel.setName("usernameLabel");
         usernameLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
         usernameLabel.setForeground(new Colors().textColor);
         usernameLabel.setBounds(260,70,414,100);
 
-        calendarScreen.add(usernameLabel);
+        add(usernameLabel);
     }
 
     private void setDateLabel(LocalDate selectedDate) {
+        monthLabel.setName("monthLabel");
         monthLabel.setText(String.valueOf(selectedDate.getMonth()));
         monthLabel.setFont(new Font("Georgia", Font.BOLD, 20));
         monthLabel.setForeground(new Colors().textColor);
@@ -304,23 +319,26 @@ public class CalendarScreen extends JFrame {
         monthLabel.setVerticalAlignment(SwingConstants.TOP);
         monthLabel.setBounds(0,15,300,600);
 
+        currentYearLabel.setName("currentYearLabel");
         currentYearLabel.setText(String.valueOf(todayDate.getYear()));
         currentYearLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
         currentYearLabel.setForeground(new Colors().textColor);
         currentYearLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentYearLabel.setBounds(0,150,414,100);
 
+        currentMonthLabel.setName("currentMonthLabel");
         currentMonthLabel.setText(String.valueOf(todayDate.getMonth()));
         currentMonthLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
         currentMonthLabel.setForeground(new Colors().textColor);
         currentMonthLabel.setHorizontalAlignment(SwingConstants.CENTER);
         currentMonthLabel.setBounds(0,180,414,100);
 
-        calendarScreen.add(currentYearLabel);
-        calendarScreen.add(currentMonthLabel);
+        add(currentYearLabel);
+        add(currentMonthLabel);
     }
 
     private void setDayLabel(Integer selectedDay) {
+        dayLabel.setName("dayLabel");
         dayLabel.setText(String.valueOf(selectedDay));
         dayLabel.setFont(new Font("Georgia", Font.BOLD, 20));
         dayLabel.setForeground(new Colors().textColor);
@@ -330,12 +348,14 @@ public class CalendarScreen extends JFrame {
     }
 
     private void setDialogLabels() {
+        dayQuestionLabel.setName("dayQuestionLabel");
         dayQuestionLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
         dayQuestionLabel.setForeground(new Colors().textColor);
         dayQuestionLabel.setHorizontalAlignment(SwingConstants.CENTER);
         dayQuestionLabel.setVerticalAlignment(SwingConstants.TOP);
         dayQuestionLabel.setBounds(0,60,300,600);
 
+        noteLabel.setName("noteLabel");
         noteLabel.setFont(new Font("Georgia", Font.PLAIN, 25));
         noteLabel.setForeground(new Colors().textColor);
         noteLabel.setHorizontalAlignment(SwingConstants.LEFT);
@@ -344,20 +364,23 @@ public class CalendarScreen extends JFrame {
     }
 
     private void setLabels() {
+        appNameLabel.setName("appNameLabel");
         appNameLabel.setFont(new Font("Georgia", Font.PLAIN, 50));
         appNameLabel.setHorizontalAlignment(SwingConstants.CENTER);
         appNameLabel.setBounds(0,20,414,100);
 
+        welcomeLabel.setName("welcomeLabel");
         welcomeLabel.setText("Welcome back ");
         welcomeLabel.setFont(new Font("Georgia", Font.PLAIN, 30));
         welcomeLabel.setForeground(new Colors().textColor);
         welcomeLabel.setBounds(50,70,414,100);
 
-        calendarScreen.add(appNameLabel);
-        calendarScreen.add(welcomeLabel);
+        add(appNameLabel);
+        add(welcomeLabel);
     }
 
     private void setButtons() {
+        prevMonthButton.setName("prevMonthButton");
         prevMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
         prevMonthButton.setForeground(new Colors().textColor);
         prevMonthButton.setBackground(new Colors().secondaryBackgroundColor);
@@ -365,6 +388,7 @@ public class CalendarScreen extends JFrame {
         prevMonthButton.setOpaque(false);
         prevMonthButton.setBorderPainted(false);
 
+        nextMonthButton.setName("nextMonthButton");
         nextMonthButton.setFont(new Font("Georgia", Font.PLAIN, 30));
         nextMonthButton.setForeground(new Colors().textColor);
         nextMonthButton.setBackground(new Colors().secondaryBackgroundColor);
@@ -372,6 +396,7 @@ public class CalendarScreen extends JFrame {
         nextMonthButton.setOpaque(false);
         nextMonthButton.setBorderPainted(false);
 
+        saveButton.setName("saveButton");
         saveButton.setFocusPainted(false);
         saveButton.setVisible(true);
         saveButton.setBackground(new Colors().secondaryBackgroundColor);
@@ -379,13 +404,14 @@ public class CalendarScreen extends JFrame {
         saveButton.setHorizontalAlignment(SwingConstants.CENTER);
         saveButton.setBounds(90, 510, 100, 40);
 
-        calendarScreen.add(prevMonthButton);
-        calendarScreen.add(nextMonthButton);
+        add(prevMonthButton);
+        add(nextMonthButton);
     }
 
     private void setComboBox() {
         String[] moods = {"Perfect", "Good", "Meh", "Bad", "Awful"};
 
+        moodComboBox.setName("moodCombobox");
         moodComboBox = new JComboBox<>(moods);
         moodComboBox.setFont(new Font("Georgia", Font.PLAIN, 20));
         moodComboBox.setForeground(new Colors().textColor);
@@ -398,6 +424,7 @@ public class CalendarScreen extends JFrame {
     }
 
     private void setTextField() {
+        noteText.setName("noteText");
         noteText.setFont(new Font("Georgia", Font.PLAIN, 20));
         noteText.setForeground(new Colors().textColor);
         noteText.setLineWrap(true);

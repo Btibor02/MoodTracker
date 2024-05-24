@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="RegistrationScreenTest" time="7.978" tests="3" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="RegistrationScreenTest" time="7.205" tests="3" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="22"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
     <property name="java.class.path" value="E:\Prog\Github\MoodTracker\MoodTracker\target\test-classes;E:\Prog\Github\MoodTracker\MoodTracker\target\classes;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing-junit\3.9.2\assertj-swing-junit-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing\3.9.2\assertj-swing-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-util\1.2.5\fest-util-1.2.5.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-reflect\1.4.1\fest-reflect-1.4.1.jar;C:\Users\Tibor\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Tibor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
+    <property name="sun.awt.enableExtraMouseButtons" value="true"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -15,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="HU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-22\bin"/>
-    <property name="sun.java.command" value="C:\Users\Tibor\AppData\Local\Temp\surefire2346488081208131385\surefirebooter-20240429220545922_3.jar C:\Users\Tibor\AppData\Local\Temp\surefire2346488081208131385 2024-04-29T22-05-45_815-jvmRun1 surefire-20240429220545922_1tmp surefire_0-20240429220545922_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Tibor\AppData\Local\Temp\surefire11561624645437548837\surefirebooter-20240524155639112_3.jar C:\Users\Tibor\AppData\Local\Temp\surefire11561624645437548837 2024-05-24T15-56-39_017-jvmRun1 surefire-20240524155639112_1tmp surefire_0-20240524155639112_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="E:\Prog\Github\MoodTracker\MoodTracker\target\test-classes;E:\Prog\Github\MoodTracker\MoodTracker\target\classes;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing-junit\3.9.2\assertj-swing-junit-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-swing\3.9.2\assertj-swing-3.9.2.jar;C:\Users\Tibor\.m2\repository\org\assertj\assertj-core\3.11.1\assertj-core-3.11.1.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-util\1.2.5\fest-util-1.2.5.jar;C:\Users\Tibor\.m2\repository\org\easytesting\fest-reflect\1.4.1\fest-reflect-1.4.1.jar;C:\Users\Tibor\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Tibor\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +31,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Tibor\AppData\Local\Temp\surefire2346488081208131385\surefirebooter-20240429220545922_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Tibor\AppData\Local\Temp\surefire11561624645437548837\surefirebooter-20240524155639112_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="22.0.1+8-16"/>
@@ -50,7 +51,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1250"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-22\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\dotnet\;C:\Program Files\apache-maven-3.9.6\bin;C:\Program Files\Java\jdk-22\bin;C:\Users\Tibor\AppData\Local\Microsoft\WindowsApps;C:\Users\Tibor\AppData\Local\GitHubDesktop\bin;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-22\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\iCLS\;C:\Program Files\Intel\Intel(R) Management Engine Components\iCLS\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\dotnet\;C:\Program Files\apache-maven-3.9.6\bin;C:\Program Files\Java\jdk-22\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Users\Tibor\AppData\Local\Microsoft\WindowsApps;C:\Users\Tibor\AppData\Local\GitHubDesktop\bin;C:\Users\Tibor\.dotnet\tools;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1250"/>
     <property name="java.vendor" value="Oracle Corporation"/>
@@ -58,7 +59,7 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="66.0"/>
   </properties>
-  <testcase name="testRegistration" classname="RegistrationScreenTest" time="6.479"/>
-  <testcase name="testLabels" classname="RegistrationScreenTest" time="0.555"/>
-  <testcase name="testRegisterButton" classname="RegistrationScreenTest" time="0.835"/>
+  <testcase name="testRegistration" classname="RegistrationScreenTest" time="5.745"/>
+  <testcase name="testLabels" classname="RegistrationScreenTest" time="0.553"/>
+  <testcase name="testRegisterButton" classname="RegistrationScreenTest" time="0.903"/>
 </testsuite>

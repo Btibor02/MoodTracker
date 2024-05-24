@@ -71,7 +71,7 @@ public class RegistrationScreen extends JFrame {
                     setVisible(false);
                     CalendarScreen calendarScreen = new CalendarScreen();
                     calendarScreen.setUser(username);
-                    calendarScreen.init();
+                    new CalendarScreen();
                 }
             } catch (Exception err) {
                 System.out.println("Error! " + err.getMessage());
