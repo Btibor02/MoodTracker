@@ -78,7 +78,7 @@ public class AnalyticsScreen extends JFrame{
     List<String> retrievedMoods = new ArrayList<>();
     private void getMoodFromDB(String chosenMonth)throws SQLException, ClassNotFoundException{
         try{
-            String monthQuery = "SELECT mood FROM user WHERE MONTH(date) = ?";
+            String monthQuery = "SELECT mood FROM mood WHERE MONTH(date) = ?";
 
             Connection con = new DatabaseConnection().preparedConnection();
             PreparedStatement preparedSt = con.prepareStatement(monthQuery);

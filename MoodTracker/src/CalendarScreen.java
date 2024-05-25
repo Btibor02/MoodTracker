@@ -5,8 +5,7 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -147,9 +146,31 @@ public class CalendarScreen extends JFrame {
         if (!selectedMood.isEmpty()) {
             model.setValueAt("<html>" + inputString + "<p style=\"text-align:center;color:" + color + ";font-size: 20px;\"> ● " + "</p> </html>" ,selectedRow, selectedCol);
             try {
-                Statement st = new DatabaseConnection().connection();
-                String query = "INSERT INTO mood_data (date, mood) VALUES ('" + todayDate.toString() + "', '" + selectedMood + "')";
-                st.executeUpdate(query);
+                String currentUsername = usernameLabel.getText();
+                //Statement st = new DatabaseConnection().connection();
+                //String query = "INSERT INTO mood (date, mood) VALUES ('" + todayDate.toString() + "', '" + selectedMood + "')";
+                //st.executeUpdate(query);
+                String getUserIdQuery = "SELECT user_id FROM user WHERE username = ?";
+                String insertMoodQuery = "INSERT INTO mood (date, mood, userid) VALUES (?, ?, ?)";
+
+                Connection con = new DatabaseConnection().preparedConnection();
+                PreparedStatement getUserIdStatement = con.prepareStatement(getUserIdQuery);
+                PreparedStatement insertMoodStatement = con.prepareStatement(insertMoodQuery);
+
+                //get the user_ID from the username
+                getUserIdStatement.setString(1,currentUsername);
+                ResultSet rs = getUserIdStatement.executeQuery();
+
+                if (rs.next()){
+                    int userId = rs.getInt("userid");
+
+                    //use the userid we got to insert the users mood
+                    //into the right table
+                    insertMoodStatement.setDate(1, Date.valueOf(todayDate));
+                    insertMoodStatement.setString(2,selectedMood);
+                    insertMoodStatement.setInt(3,userId);
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
                 // Handle exception
