@@ -151,7 +151,7 @@ public class CalendarScreen extends JFrame {
                 //String query = "INSERT INTO mood (date, mood) VALUES ('" + todayDate.toString() + "', '" + selectedMood + "')";
                 //st.executeUpdate(query);
                 String getUserIdQuery = "SELECT user_id FROM user WHERE username = ?";
-                String insertMoodQuery = "INSERT INTO mood (date, mood, userid) VALUES (?, ?, ?)";
+                String insertMoodQuery = "INSERT INTO mood (date, mood, userid, moodnote) VALUES (?, ?, ?, ?)";
 
                 Connection con = new DatabaseConnection().preparedConnection();
                 PreparedStatement getUserIdStatement = con.prepareStatement(getUserIdQuery);
@@ -164,11 +164,13 @@ public class CalendarScreen extends JFrame {
                 if (rs.next()){
                     int userId = rs.getInt("userid");
 
+                    String noteText = getNoteText();
                     //use the userid we got to insert the users mood
                     //into the right table
                     insertMoodStatement.setDate(1, Date.valueOf(todayDate));
                     insertMoodStatement.setString(2,selectedMood);
                     insertMoodStatement.setInt(3,userId);
+                    insertMoodStatement.setString(4, noteText);
                 }
 
             } catch (Exception e) {
@@ -450,5 +452,7 @@ public class CalendarScreen extends JFrame {
         noteText.setWrapStyleWord(true);
         noteText.setBounds(10, 200, 265, 300);
     }
-
+    public String getNoteText() {
+        return noteText.getText();
+    }
 }

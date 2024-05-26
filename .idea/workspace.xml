@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3159eefb-a3b1-4518-a77e-6b40838d2b0d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/AnalyticsScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/CalendarScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MoodTrackerGraph.java" beforeDir="false" afterPath="$PROJECT_DIR$/MoodTracker/src/MoodTrackerGraph.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
