@@ -5,17 +5,27 @@ public class MoodTrackerGraph extends JPanel {
 
     public static final long serialVersionUID = 1L;
 
-    public final int[] perfect = {5, 8, 10, 8};
-    public final int[] good = {10, 8, 9, 10};
-    public final int[] meh = {8, 4, 5, 8};
-    public final int[] bad = {5, 6, 4, 3};
-    public final int[] awful = {3, 4, 3, 1};
+    public int[] perfect = {5, 8, 10, 8};
+    public int[] good = {10, 8, 9, 10};
+    public int[] meh = {8, 4, 5, 8};
+    public int[] bad = {5, 6, 4, 3};
+    public int[] awful = {3, 4, 3, 1};
 
     public final String[] months = {"March", "April", "May", "June"};
 
     public MoodTrackerGraph() {
         setBackground(Color.WHITE);
     }
+
+    //used to append moods into array and then displayed
+
+//    public void appendMoods(AnalyticsScreen analyticsScreen){
+//        perfect.append(analyticsScreen.getPerfectCount());
+//        good.append(analyticsScreen.getGoodCount());
+//        meh.append(analyticsScreen.getMehCount());
+//        bad.append(analyticsScreen.getBadCount());
+//        awful.append(analyticsScreen.getAwfulCount());
+//    }
 
     @Override
     protected void paintComponent(Graphics g) {

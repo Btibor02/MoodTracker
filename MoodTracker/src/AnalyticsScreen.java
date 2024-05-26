@@ -30,6 +30,8 @@ public class AnalyticsScreen extends JFrame{
     //initializes the screen
     public void init() {
         loadScreen();
+        //comboBoxMonths();
+        //analyzeData();
     }
 
     //drop down box to choose the months they want to see the analytics for (mouse listener needed)
@@ -74,8 +76,23 @@ public class AnalyticsScreen extends JFrame{
 
         analyticsScreen.add(menu);
     }
-    //Method to retrieve mood from the DB
     List<String> retrievedMoods = new ArrayList<>();
+    public int perfectCount = 0;
+    public int goodCount = 0;
+    public int mehCount = 0;
+    public int badCount = 0;
+    public int awfulCount = 0;
+    public int getperfectCount() {
+        return perfectCount;}
+    public int getGoodCount() {
+        return goodCount;}
+    public int getMehCount() {
+        return mehCount;}
+    public int getBadCount() {
+        return badCount;}
+    public int getAwfulCount() {
+        return awfulCount;}
+    //Method to retrieve mood from the DB
     private void getMoodFromDB(String chosenMonth)throws SQLException, ClassNotFoundException{
         try{
             String monthQuery = "SELECT mood FROM mood WHERE MONTH(date) = ?";
@@ -92,18 +109,42 @@ public class AnalyticsScreen extends JFrame{
         }catch(Exception ignored) {
         }
     }
+
+    public int getPerfectCount() {
+        return perfectCount;
+    }
+
     List<Integer> retrievedMoodsInt = new ArrayList<>();
     double averageMonthMood = 0;
     //Method to analyze data
-    private void analyzeData(List<String> retrievedMoods){
+    public void analyzeData(List<String> retrievedMoods){
         //get mood to INT
         for (String mood : retrievedMoods){
             retrievedMoodsInt.add(moodToInt(mood));
         }
         //get avg mood
        averageMonthMood = getAverageMood(retrievedMoodsInt);
-    }
 
+        //sort each mood to its own list so we cna display it later
+        for (String s: retrievedMoods){
+            switch (s){
+                case "perfect":
+                    perfectCount += 1;
+                    break;
+                case "good":
+                    goodCount += 1;
+                    break;
+                case "meh":
+                    mehCount += 1;
+                    break;
+                case "bad":
+                    badCount += 1;
+                case "awful":
+                    awfulCount += 1;
+                    break;
+            }
+        }
+    }
     private double getAverageMood(List<Integer> retrievedMoodsInt){
     double sum = 0;
     for (int mood : retrievedMoodsInt){
