@@ -11,8 +11,8 @@ public class RegistrationScreen extends JFrame {
     private final JLabel confirmPasswordLabel = new JLabel("Confirm Password");
     private final JLabel loginLabel = new JLabel("I've an account");
 
-    private final JButton loginButton = new JButton("Sign up");
-    private final JButton registerButton = new JButton("Login");
+    private final JButton loginButton = new JButton("Login");
+    private final JButton registerButton = new JButton("Sign up");
 
     private final JTextField usernameField = new JTextField();
     private final JPasswordField passwordField = new JPasswordField();

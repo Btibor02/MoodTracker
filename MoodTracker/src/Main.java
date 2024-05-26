@@ -6,6 +6,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         new WelcomeScreen().init();
         //new CalendarScreen().init();
-        new AnalyticsScreen().init();
+        //new AnalyticsScreen().init();
     }
 }
